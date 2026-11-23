@@ -87,16 +87,16 @@ await page.fill("#c-adultos", "12");
 await page.evaluate(() => { HTMLAnchorElement.prototype.click = function () { window.__opened = this.href; }; });
 await page.locator("[data-calc]").evaluate(f => f.requestSubmit()); // envia sem depender de a barra fixa cobrir o botão
 const ev = await page.evaluate(() => window.__ev);
-for (const e of ["phone_click", "price_request_click", "directions_click", "maps_profile_click", "cut_tab_view", "bbq_calc_used", "generate_lead"]) check(ev.includes(e), `evento "${e}"`);
-check(/^tel:\+551125665264$/.test(await page.evaluate(() => window.__opened)), "sem WhatsApp configurado, a lista abre a ligação");
+for (const e of ["whatsapp_click", "phone_click", "price_request_click", "directions_click", "maps_profile_click", "cut_tab_view", "bbq_calc_used", "generate_lead"]) check(ev.includes(e), `evento "${e}"`);
+check(/^https:\/\/wa\.me\/551125665264\?text=/.test(await page.evaluate(() => window.__opened) || ""), "lista da calculadora abre o WhatsApp da loja");
 
 /* ---------- Com WhatsApp configurado ---------- */
 const ctx2 = await browser.newContext();
-await ctx2.route("**/js/main.js*", async r => { const res = await r.fetch(); r.fulfill({ response: res, body: (await res.text()).replace('whatsapp: "",', 'whatsapp: "5511999998888",') }); });
+await ctx2.route("**/js/main.js*", async r => { const res = await r.fetch(); r.fulfill({ response: res, body: (await res.text()).replace(/whatsapp: "\d+",/, 'whatsapp: "",') }); });
 const p2 = await ctx2.newPage();
 await p2.goto(BASE + "/", { waitUntil: "networkidle" });
-check(/^https:\/\/wa\.me\/5511999998888\?text=/.test(await p2.getAttribute(".hero-actions a[data-contact]", "href")), "com WhatsApp: botões viram wa.me com mensagem");
-check(/picanha/.test(decodeURIComponent(await p2.getAttribute(".price-link", "href"))), "com WhatsApp: 'Preço de hoje' pergunta pelo corte");
+check(/^tel:/.test(await p2.getAttribute(".hero-actions a[data-contact]", "href")), "sem WhatsApp configurado, botões voltam a ligar");
+check(/contrafilé/.test(decodeURIComponent(await page.getAttribute(".price-link", "href"))), "'Preço de hoje' pergunta pelo corte no WhatsApp");
 await ctx2.close();
 
 /* ---------- Animações e rolagem ---------- */

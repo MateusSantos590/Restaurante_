@@ -1,4 +1,4 @@
-# Plano de marketing local: Casa de Carne RB
+# Plano de marketing local: Casa de Carnes RB
 
 Objetivo: virar o açougue que o bairro lembra quando vai fazer churrasco.
 Métrica principal: **ligações, mensagens e rotas pedidas por semana.**
@@ -10,6 +10,7 @@ Métrica principal: **ligações, mensagens e rotas pedidas por semana.**
 | Categoria cadastrada: **"Supermercado"** | Quem busca "açougue perto de mim" pode não encontrar a loja | Categoria principal "Açougue"; secundária "Loja de carnes", se fizer sentido |
 | Sem site na ficha | O Google mostra "Adicionar website" | Colocar o link deste site |
 | Poucas ou nenhuma foto do dono | Foto de balcão e de carne vende | Subir fachada, balcão, cortes, estacionamento |
+| Google mostra domingo até 14h; os encartes da loja dizem domingo e feriados até 13h | Cliente que chega às 13h30 encontra a porta fechada | Corrigir o horário no Google (o site já usa 13h) |
 | Nota 4,1 | Boa, mas dá para subir respondendo e pedindo avaliações | Responder todas e pedir avaliação no balcão |
 
 ## O que o site faz para vender
@@ -18,6 +19,9 @@ Métrica principal: **ligações, mensagens e rotas pedidas por semana.**
 3. **Aberto agora / fechado**, com o dia atual destacado no horário.
 4. **Aberto domingo de manhã** em destaque: é quando o churrasco é decidido.
 5. Barra fixa no celular com **Ligar** e **Calcular churrasco**.
+
+## Cardápio com preços
+O site mostra os 25 itens dos encartes do Facebook (out/2025) com o preço da última oferta e um aviso para confirmar o valor do dia. A cada novo encarte, atualize os preços em `public/index.html` (seção `#cortes`) e a data na nota abaixo da lista.
 
 ## Rotina semanal (30 minutos)
 | Quando | Ação |

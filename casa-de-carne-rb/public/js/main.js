@@ -14,9 +14,9 @@
     // EDITAR: número do WhatsApp com DDI e DDD, só dígitos (ex.: "5511999998888").
     // Vazio = todos os botões de pedido viram "Ligar". Preenchido = viram WhatsApp
     // com a mensagem pronta.
-    whatsapp: "",
+    whatsapp: "551125665264", // (11) 2566-5264, WhatsApp divulgado nos encartes da loja
     timeZone: "America/Sao_Paulo",
-    hours: { 0: ["08:00", "14:00"], 1: ["08:00", "20:00"], 2: ["08:00", "20:00"], 3: ["08:00", "20:00"], 4: ["08:00", "20:00"], 5: ["08:00", "20:00"], 6: ["08:00", "20:00"] },
+    hours: { 0: ["08:00", "13:00"], 1: ["08:00", "20:00"], 2: ["08:00", "20:00"], 3: ["08:00", "20:00"], 4: ["08:00", "20:00"], 5: ["08:00", "20:00"], 6: ["08:00", "20:00"] },
     // Gramas por pessoa no churrasco (estimativa usual)
     gramsAdult: 400,
     gramsChild: 200,

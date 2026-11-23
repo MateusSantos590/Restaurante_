@@ -22,7 +22,7 @@ h1{font-family:Z;font-weight:700;font-size:104px;line-height:.95;margin:0 0 26px
 h1 span{display:block;background:linear-gradient(100deg,#f3dc9e,#c99a45 45%,#f0d48c);-webkit-background-clip:text;color:transparent}
 p{font-size:28px;margin:0;color:#e3cfb8}
 </style><svg class="f" viewBox="0 0 1000 600" preserveAspectRatio="none"><defs><linearGradient id="o" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f3dc9e"/><stop offset=".5" stop-color="#c99a45"/><stop offset="1" stop-color="#f0d48c"/></linearGradient></defs><path d="M60 40 H940 L985 120 V430 Q985 470 940 490 L540 585 Q500 596 460 585 L60 490 Q15 470 15 430 V120 Z" fill="none" stroke="url(#o)" stroke-width="3" vector-effect="non-scaling-stroke"/></svg>
-<div style="position:relative;margin-top:-30px"><p class="e">★ Açougue no Jardim das Oliveiras ★</p><h1>Casa de Carne <span>RB</span></h1><p>Aberto todos os dias · Seg a sáb 8h às 20h · Dom 8h às 14h</p></div>`);
+<div style="position:relative;margin-top:-30px"><p class="e">★ Açougue no Jardim das Oliveiras ★</p><h1>Casa de Carnes <span>RB</span></h1><p>Aberto todos os dias · Seg a sáb 8h às 20h · Dom 8h às 13h</p></div>`);
 await p.evaluate(() => document.fonts.ready); await p.waitForTimeout(300);
 await p.screenshot({ path: new URL("og-image.png", out).pathname });
 for (const [size, name] of [[180, "apple-touch-icon.png"], [512, "icon-512.png"]]) {

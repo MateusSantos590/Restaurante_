@@ -1,6 +1,6 @@
-# Casa de Carne RB — site
+# Casa de Carnes RB — site
 
-Landing page do açougue **Casa de Carne RB** (R. Manuel Lemes da Silva, 426, Jardim das Oliveiras, São Paulo/SP).
+Landing page do açougue **Casa de Carnes RB** (R. Manuel Lemes da Silva, 426, Jardim das Oliveiras, São Paulo/SP).
 Mesma base técnica do site do restaurante (HTML, CSS e JS puros, sem dependências), com identidade, layout e estratégia próprios.
 
 **Linguagem visual:** casa de carnes clássica. Vinho profundo, dourado e creme; títulos em Zilla Slab (serifa grossa) e texto em Archivo; moldura em brasão no topo, cortes curvos entre seções, brasa com faíscas e faixa dourada com os cortes. A direção foi inspirada no estilo de sites de marcas de carne premium, sem usar nome, logo, fotos ou textos de outra marca.
@@ -9,7 +9,7 @@ Mesma base técnica do site do restaurante (HTML, CSS e JS puros, sem dependênc
 | Dado | Origem |
 |---|---|
 | Nome, endereço, CEP, telefone (11) 2566-5264 | Google Maps (print enviado) |
-| Horário: seg a sáb 8h às 20h, dom 8h às 14h | Google Maps (print enviado) |
+| Horário: seg a sáb 8h às 20h, dom 8h às 13h | Google Maps (print enviado) |
 | Coordenadas e link oficial da ficha (`maps?cid=...`) | Google Maps |
 
 ## Antes de publicar: confirmar com o cliente
