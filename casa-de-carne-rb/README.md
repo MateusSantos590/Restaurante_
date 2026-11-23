@@ -31,7 +31,9 @@ Dicas para a foto: luz do dia, celular na horizontal, assunto no centro (as bord
 ## Animações
 - Entrada do topo em sequência e selo giratório (pausa quando sai da tela).
 - Blocos aparecem ao rolar, itens de lista um depois do outro. O que já está na tela no carregamento nunca é escondido.
-- Menu marca a seção visível. Total da calculadora "pula" quando muda.
+- Menu marca a seção visível. Total da calculadora "pula" quando muda, e barras mostram a proporção de cada carne.
+- Faixa vermelha com os cortes passando logo abaixo do topo (pausa fora da tela). Os nomes ficam no HTML: atualize junto com a lista de cortes.
+- Seções numeradas (01, 02...) pelo JS; a galeria escondida não entra na conta.
 - Tudo usa só `transform` e `opacity` (60 fps medidos com CPU 4x mais lenta) e desliga com "reduzir movimento" no aparelho.
 
 ## Estrutura

@@ -93,6 +93,7 @@
   <div class="topbar">
     <div class="container topbar-inner">
       <p class="status" data-status aria-live="polite"><span class="status-dot" aria-hidden="true"></span><span data-status-text>Aberto todos os dias</span></p>
+      <p class="topbar-addr">R. Manuel Lemes da Silva, 426 · Jardim das Oliveiras</p>
       <a class="topbar-link" href="tel:+551125665264">(11) 2566-5264</a>
     </div>
   </div>
@@ -161,12 +162,17 @@
       </dl>
     </section>
 
+    <!-- Faixa decorativa com os cortes (EDITAR junto com a lista de cortes). Duplicada para o loop não ter emenda. -->
+    <div class="ticker" aria-hidden="true">
+      <div class="ticker-track"><span>Picanha</span><span>Fraldinha</span><span>Costela</span><span>Alcatra</span><span>Contrafilé</span><span>Pernil</span><span>Costelinha suína</span><span>Linguiça toscana</span><span>Frango</span><span>Maminha</span><span>Picanha</span><span>Fraldinha</span><span>Costela</span><span>Alcatra</span><span>Contrafilé</span><span>Pernil</span><span>Costelinha suína</span><span>Linguiça toscana</span><span>Frango</span><span>Maminha</span></div>
+    </div>
+
     <!-- ============ CORTES ============ -->
     <!-- EDITAR: confirme com o açougue quais cortes ele vende. Não há preços: eles mudam e são passados no atendimento. -->
     <section class="section cuts" id="cortes" aria-labelledby="cortes-titulo">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">Cortes</p>
+          <p class="eyebrow section-label">Cortes</p>
           <h2 id="cortes-titulo">O que tem no balcão</h2>
           <p>O preço da carne muda toda semana, por isso ele não fica no site. Toque em "Preço de hoje" no corte que você quer e pergunte o valor.</p>
         </header>
@@ -224,7 +230,7 @@
     <section class="section bbq" id="churrasco" aria-labelledby="churrasco-titulo">
       <div class="container bbq-grid">
         <div data-reveal>
-          <p class="eyebrow eyebrow-light">Calculadora</p>
+          <p class="eyebrow eyebrow-light section-label">Calculadora</p>
           <h2 id="churrasco-titulo">Quanto de carne para o seu churrasco?</h2>
           <p>Coloque quantas pessoas vão e marque as carnes. A conta aparece na hora, separada por tipo, e o botão manda a lista para o açougue.</p>
           <p class="note">A conta usa 400 g por adulto e 200 g por criança, somando todas as carnes. Se a turma come bem, coloque mais adultos.</p>
@@ -234,11 +240,19 @@
           <div class="calc-row">
             <div class="field">
               <label for="c-adultos">Adultos</label>
-              <input id="c-adultos" name="adultos" type="number" inputmode="numeric" min="0" max="200" value="10">
+              <div class="stepper">
+                <button type="button" class="step-btn" data-step="-1" data-for="c-adultos" aria-label="Diminuir adultos">−</button>
+                <input id="c-adultos" name="adultos" type="number" inputmode="numeric" min="0" max="200" value="10">
+                <button type="button" class="step-btn" data-step="1" data-for="c-adultos" aria-label="Aumentar adultos">+</button>
+              </div>
             </div>
             <div class="field">
               <label for="c-criancas">Crianças</label>
-              <input id="c-criancas" name="criancas" type="number" inputmode="numeric" min="0" max="200" value="2">
+              <div class="stepper">
+                <button type="button" class="step-btn" data-step="-1" data-for="c-criancas" aria-label="Diminuir crianças">−</button>
+                <input id="c-criancas" name="criancas" type="number" inputmode="numeric" min="0" max="200" value="2">
+                <button type="button" class="step-btn" data-step="1" data-for="c-criancas" aria-label="Aumentar crianças">+</button>
+              </div>
             </div>
           </div>
           <fieldset class="field">
@@ -268,7 +282,7 @@
     <section class="section steps" id="como-pedir" aria-labelledby="pedir-titulo">
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">Como pedir</p>
+          <p class="eyebrow section-label">Como pedir</p>
           <h2 id="pedir-titulo">Separe pelo telefone, retire no balcão</h2>
         </header>
         <ol class="steps-grid">
@@ -286,7 +300,7 @@
     <section class="section store" id="a-loja" aria-labelledby="loja-titulo" hidden>
       <div class="container">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">A loja</p>
+          <p class="eyebrow section-label">A loja</p>
           <h2 id="loja-titulo">Conheça o balcão antes de vir</h2>
         </header>
         <div class="gallery">
@@ -325,6 +339,7 @@
     <!-- ============ AVALIAÇÕES ============ -->
     <section class="section reviews" aria-labelledby="avaliacoes-titulo">
       <div class="container reviews-box" data-reveal>
+        <svg class="reviews-stars" viewBox="0 0 120 24" aria-hidden="true"><use href="#i-star" width="24" height="24"/><use href="#i-star" x="24" width="24" height="24"/><use href="#i-star" x="48" width="24" height="24"/><use href="#i-star" x="72" width="24" height="24"/><use href="#i-star" x="96" width="24" height="24"/></svg>
         <div>
           <h2 id="avaliacoes-titulo">Já comprou aqui?</h2>
           <p>Conte no Google como foi. Quem mora no bairro e ainda não conhece a loja lê as avaliações antes de vir.</p>
@@ -340,7 +355,7 @@
     <section class="section faq" id="duvidas" aria-labelledby="duvidas-titulo">
       <div class="container faq-wrap">
         <header class="section-head" data-reveal>
-          <p class="eyebrow">Dúvidas</p>
+          <p class="eyebrow section-label">Dúvidas</p>
           <h2 id="duvidas-titulo">Perguntas frequentes</h2>
         </header>
         <div class="faq-list">
@@ -356,7 +371,7 @@
     <section class="section location" id="localizacao" aria-labelledby="local-titulo">
       <div class="container location-grid">
         <div data-reveal>
-          <p class="eyebrow">Endereço e horário</p>
+          <p class="eyebrow section-label">Endereço e horário</p>
           <h2 id="local-titulo">Passe no balcão</h2>
           <address class="address">R. Manuel Lemes da Silva, 426<br>Jardim das Oliveiras, São Paulo - SP<br>CEP 08122-140</address>
           <table class="hours" data-hours>
@@ -420,6 +435,7 @@
         </ul>
       </div>
     </div>
+    <p class="footer-mark" aria-hidden="true">Casa de Carne RB</p>
     <div class="container footer-bottom">
       <p>© <span data-year>2026</span> Casa de carne RB ltda.</p>
     </div>

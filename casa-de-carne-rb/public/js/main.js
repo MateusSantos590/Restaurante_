@@ -184,17 +184,32 @@
         var box = totalEl.parentNode;
         box.classList.remove("is-bump"); void box.offsetWidth; box.classList.add("is-bump"); // reinicia a animação
       }
+      var maxG = r.items.reduce(function (m, it) { return Math.max(m, it.grams); }, 0) || 1;
       listEl.replaceChildren.apply(listEl, r.items.map(function (it) {
         var li = document.createElement("li");
         var a = document.createElement("span"); a.textContent = it.name;
         var b = document.createElement("strong"); b.textContent = kg(it.grams) + " kg";
-        li.appendChild(a); li.appendChild(b); return li;
+        // Barra proporcional: largura via transform (não força novo layout)
+        var bar = document.createElement("span"); bar.className = "calc-bar"; bar.setAttribute("aria-hidden", "true");
+        var fill = document.createElement("span"); fill.style.transform = "scaleX(" + (it.grams / maxG).toFixed(3) + ")";
+        bar.appendChild(fill);
+        li.appendChild(a); li.appendChild(b); li.appendChild(bar); return li;
       }));
       if (!r.items.length) {
         var li = document.createElement("li"); li.textContent = "Marque pelo menos um tipo de carne."; listEl.appendChild(li);
       }
       return r;
     }
+
+    // Botões − e +: mudam o número e avisam o formulário como se a pessoa tivesse digitado
+    form.addEventListener("click", function (e) {
+      var btn = e.target.closest(".step-btn");
+      if (!btn) return;
+      var input = document.getElementById(btn.getAttribute("data-for"));
+      var v = Math.min(200, Math.max(0, (Math.floor(Number(input.value)) || 0) + Number(btn.getAttribute("data-step"))));
+      input.value = String(v);
+      input.dispatchEvent(new Event("input", { bubbles: true }));
+    });
 
     form.addEventListener("input", function () {
       render();
@@ -228,10 +243,13 @@
   /* ------------------------------------------------------------------
      6. Pausa o selo giratório fora da tela; ano no rodapé
      ------------------------------------------------------------------ */
+  /* Animações contínuas (selo e faixa de cortes) param quando saem da tela */
   function initStampPause() {
-    var art = document.querySelector(".hero-art");
-    if (!art || !("IntersectionObserver" in window)) return;
-    new IntersectionObserver(function (en) { art.classList.toggle("is-paused", !en[0].isIntersecting); }).observe(art);
+    if (!("IntersectionObserver" in window)) return;
+    [".hero-art", ".ticker"].forEach(function (sel) {
+      var el = document.querySelector(sel);
+      if (el) new IntersectionObserver(function (en) { el.classList.toggle("is-paused", !en[0].isIntersecting); }).observe(el);
+    });
   }
   /* ------------------------------------------------------------------
      7. Animação ao rolar, com itens de lista em sequência
@@ -278,10 +296,20 @@
     Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
   }
 
+  /* Numera os rótulos das seções visíveis (01, 02...). Seção escondida não conta. */
+  function initSectionNumbers() {
+    var n = 0;
+    document.querySelectorAll("main .section-label").forEach(function (el) {
+      if (el.closest("[hidden]")) return;
+      n += 1;
+      el.setAttribute("data-n", (n < 10 ? "0" : "") + n);
+    });
+  }
+
   function initYear() { var y = document.querySelector("[data-year]"); if (y) y.textContent = String(new Date().getFullYear()); }
 
   function boot() {
-    [initContact, initStatus, initHeader, initTabs, initPriceLinks, initCalc, initStampPause, initReveal, initScrollSpy, initYear].forEach(function (fn) {
+    [initContact, initStatus, initHeader, initTabs, initPriceLinks, initCalc, initStampPause, initSectionNumbers, initReveal, initScrollSpy, initYear].forEach(function (fn) {
       try { fn(); } catch (err) { console.error(err); }
     });
   }
