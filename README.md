@@ -15,7 +15,7 @@ conteúdo de exemplo, marcado com `EDITAR` no código. Procure por `EDITAR` e tr
 
 | O quê | Onde |
 |---|---|
-| Número do WhatsApp (`5511900000000`) | `public/js/main.js` (CONFIG), `public/index.html` (links `wa.me`, `tel:`, rodapé e JSON-LD) |
+| Número do WhatsApp (`5511965666268`) | `public/js/main.js` (CONFIG), `public/index.html` (links `wa.me`, `tel:`, rodapé e JSON-LD) |
 | Horário de funcionamento | `public/js/main.js` (CONFIG.hours), tabela em `index.html` e JSON-LD |
 | Cardápio e preços | `public/index.html`, seção `#cardapio` |
 | Texto "Sobre a casa" | `public/index.html`, seção `#sobre` |

@@ -12,18 +12,18 @@
      ---------------------------------------------------------------------- */
   var CONFIG = Object.freeze({
     // EDITAR: número real com DDI+DDD, só dígitos. Ex.: 5511987654321
-    whatsapp: "5511900000000",
+    whatsapp: "5511965666268",
     timeZone: "America/Sao_Paulo",
     // Horários por dia da semana (0 = domingo). null = fechado. Formato "HH:MM".
     // EDITAR: confirme o horário real.
     hours: {
       0: null,
-      1: ["10:30", "15:30"],
-      2: ["10:30", "15:30"],
-      3: ["10:30", "15:30"],
-      4: ["10:30", "15:30"],
-      5: ["10:30", "15:30"],
-      6: ["10:30", "15:00"]
+      1: ["07:30", "18:20"],
+      2: ["07:30", "18:20"],
+      3: ["07:30", "18:20"],
+      4: ["07:30", "18:20"],
+      5: ["07:30", "18:20"],
+      6: ["07:30", "18:20"]
     },
     mapEmbed: "https://www.google.com/maps?q=" +
       encodeURIComponent("Hora do Rango Restaurante, R. Daniel Bernardo, 180 - São Miguel Paulista, São Paulo - SP, 08010-100") +
@@ -54,7 +54,7 @@
     return { day: days[map.weekday], minutes: parseInt(map.hour, 10) * 60 + parseInt(map.minute, 10) };
   }
   function toMinutes(hhmm) { var p = hhmm.split(":"); return +p[0] * 60 + +p[1]; }
-  function fmt(hhmm) { return hhmm.replace(":", "h").replace("h00", "h"); }
+  function fmt(hhmm) { return hhmm.replace(/^0/, "").replace(":", "h").replace("h00", "h"); }
 
   function nextOpening(day) {
     var names = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
