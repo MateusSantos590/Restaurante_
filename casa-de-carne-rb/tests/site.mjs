@@ -17,6 +17,11 @@ for (const width of [375, 768, 1280]) {
   await p.goto(BASE + "/", { waitUntil: "networkidle" });
   check(await p.evaluate(() => document.documentElement.scrollWidth <= innerWidth), `${width}px: sem rolagem horizontal`);
   check(await p.locator(".hero-actions .btn-primary").isVisible(), `${width}px: botão de pedido visível sem rolar`);
+  await p.evaluate(async () => { for (let y = 0; y < document.body.scrollHeight; y += 600) { scrollTo(0, y); await new Promise(r => setTimeout(r, 30)); } });
+  const leaks = await p.evaluate(() => [...document.querySelectorAll("main *, footer *")]
+    .filter(e => !e.closest(".ticker, .embers, .footer-mark, [hidden], .sr-only") && e.getBoundingClientRect().width > 0 && e.getBoundingClientRect().right > innerWidth + 1)
+    .slice(0, 3).map(e => e.tagName + "." + String(e.className).split(" ")[0]));
+  check(leaks.length === 0, `${width}px: nenhum conteúdo passa da borda direita ${leaks.join(", ")}`);
   check(errs.length === 0, `${width}px: console sem erros ${errs.length ? JSON.stringify(errs) : ""}`);
   await p.close();
 }
