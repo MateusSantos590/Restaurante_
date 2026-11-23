@@ -1,3 +1,14 @@
+# Sites de comércio local
+
+Este repositório tem dois sites independentes, com a mesma base técnica:
+
+| Site | Pasta publicada | Documentação |
+|---|---|---|
+| Hora do Rango Restaurante | `public/` | este README |
+| Casa de Carne RB (açougue) | `casa-de-carne-rb/public/` | `casa-de-carne-rb/README.md` |
+
+---
+
 # Hora do Rango Restaurante — site oficial
 
 Landing page do **Hora do Rango Restaurante** (R. Daniel Bernardo, 180 — São Miguel Paulista, São Paulo/SP).

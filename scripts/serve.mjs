@@ -6,13 +6,15 @@ import { readFile, stat } from "node:fs/promises";
 import { join, normalize, extname, sep } from "node:path";
 import { fileURLToPath } from "node:url";
 
-const ROOT = fileURLToPath(new URL("../public/", import.meta.url));
+// Pasta do site: padrão public/ (restaurante). Ex.: node scripts/serve.mjs casa-de-carne-rb/public
+import { resolve } from "node:path";
+const ROOT = process.argv[2] ? resolve(process.argv[2]) + sep : fileURLToPath(new URL("../public/", import.meta.url));
 const PORT = Number(process.env.PORT) || 8080;
 const TYPES = {
   ".html": "text/html; charset=utf-8", ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8", ".svg": "image/svg+xml",
   ".png": "image/png", ".xml": "application/xml", ".txt": "text/plain; charset=utf-8",
-  ".webmanifest": "application/manifest+json", ".ico": "image/x-icon"
+  ".webmanifest": "application/manifest+json", ".ico": "image/x-icon", ".woff2": "font/woff2"
 };
 
 // Lê _headers no formato Netlify/Cloudflare: linha sem indentação = padrão de URL,

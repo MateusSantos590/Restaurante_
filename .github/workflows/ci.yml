@@ -24,6 +24,11 @@ jobs:
         run: npx --yes wait-on@8.0.1 http://localhost:8080 && npm test
       - name: Teste de SEO, desempenho e conversões
         run: npm run test:seo
+      - name: Site do açougue (layout, SEO, calculadora, eventos, segurança)
+        run: |
+          PORT=8081 node scripts/serve.mjs casa-de-carne-rb/public &
+          npx --yes wait-on@8.0.1 http://localhost:8081
+          BASE_URL=http://localhost:8081 node casa-de-carne-rb/tests/site.mjs
       - name: Guardar screenshots
         if: always()
         uses: actions/upload-artifact@v4
