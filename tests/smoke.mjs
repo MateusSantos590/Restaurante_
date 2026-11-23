@@ -50,7 +50,7 @@ check(await page.getAttribute("[data-nav-toggle]", "aria-expanded") === "false",
 // Abas com teclado
 await page.focus("#tab-dia");
 await page.keyboard.press("ArrowRight");
-check(await page.locator("#painel-fixos").isVisible(), "abas do cardápio respondem às setas do teclado");
+check(await page.locator("#painel-cafe").isVisible(), "abas do cardápio respondem às setas do teclado");
 
 // Formulário: inválido mostra erros
 await page.waitForTimeout(2600); // tempo mínimo anti-robô
