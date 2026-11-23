@@ -86,6 +86,11 @@ await p2.click("[data-order-form] button[type=submit]");
 await p2.waitForTimeout(500);
 check(!opened, "honeypot bloqueia envio de robô");
 
+// Links do Google Maps: formato oficial (abre o app no celular), sem encurtador
+const mapLinks = await p2.$$eval("a[href*='google.com/maps'], a[href*='goo.gl']", as => as.map(a => a.href));
+check(mapLinks.length >= 3 && mapLinks.every(h => /^https:\/\/www\.google\.com\/maps(\/dir\/\?api=1&destination=|\?cid=)/.test(h)),
+  `links do Google Maps no formato oficial (${mapLinks.length})`);
+
 // Cabeçalhos de segurança
 const res = await p2.request.get(BASE + "/");
 const h = res.headers();
