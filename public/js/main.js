@@ -370,13 +370,22 @@
     a.href = "https://wa.me/?text=" + encodeURIComponent("Olha o cardápio do Hora do Rango, em São Miguel Paulista: " + url);
   }
 
+  /* Pausa a animação do prato quando ele sai da tela: menos trabalho para o celular */
+  function initPlatePause() {
+    var art = document.querySelector(".hero-art");
+    if (!art || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (entries) {
+      art.classList.toggle("is-paused", !entries[0].isIntersecting);
+    }).observe(art);
+  }
+
   function initYear() {
     var y = document.querySelector("[data-year]");
     if (y) y.textContent = String(new Date().getFullYear());
   }
 
   function boot() {
-    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initMap, initReveal, initShare, initYear]
+    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initMap, initReveal, initShare, initPlatePause, initYear]
       .forEach(function (fn) {
         try { fn(); } catch (err) { console.error(err); } // uma falha não derruba o resto
       });
