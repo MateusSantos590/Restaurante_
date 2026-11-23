@@ -32,7 +32,28 @@ Use um link diferente em cada lugar, assim você vê de onde vêm os pedidos:
 | Panfleto / QR code | `https://SEU-DOMINIO/?utm_source=panfleto&utm_medium=qr` |
 | Status do WhatsApp | `https://SEU-DOMINIO/?utm_source=whatsapp&utm_medium=status` |
 
-Para ver os números sem cookies, ative o **Cloudflare Web Analytics** (grátis). Ele exige liberar o script dele na CSP (`script-src` e `connect-src`): faça isso só se for usar e atualize `_headers`, `vercel.json` e `.htaccess`.
+## 2.1 Medir as conversões
+O site registra estes eventos sozinho. Eles ficam no `dataLayer` e não enviam nada para a internet enquanto o Analytics estiver desligado.
+
+| Evento | Quando acontece |
+|---|---|
+| `whatsapp_click` | clique em qualquer botão de WhatsApp (o campo `link_location` diz qual: cabeçalho, hero, botão flutuante...) |
+| `phone_click` | clique em "Ligar" |
+| `directions_click` | clique em "Como chegar" |
+| `maps_profile_click` | clique para ver a ficha ou as avaliações no Google |
+| `share_click` | clique em "Mandar o cardápio para um amigo" |
+| `menu_tab_view` | troca de aba do cardápio |
+| `form_start`, `form_error` | começou a preencher / errou um campo da encomenda |
+| `generate_lead` | formulário de encomenda enviado (a conversão principal) |
+
+**Para ligar a medição no Google Analytics 4:**
+1. Crie uma propriedade GA4 e copie o ID (`G-XXXXXXXXXX`).
+2. Em `public/js/analytics.js`, preencha `GA4_ID`.
+3. Libere o Google nos 4 arquivos de cabeçalhos (`public/index.html`, `public/_headers`, `vercel.json`, `public/.htaccess`): acrescente `https://www.googletagmanager.com` em `script-src` e `https://*.google-analytics.com https://*.analytics.google.com https://www.googletagmanager.com` em `connect-src`.
+4. Atualize a política de privacidade (o Analytics grava cookies).
+5. No GA4, marque `generate_lead` e `whatsapp_click` como "eventos principais" (conversões).
+
+Com o ID preenchido aparece um aviso de cookies e o Google só carrega se o visitante aceitar (LGPD). Quem recusa continua usando o site normalmente.
 
 ## 3. Rotina semanal (30 minutos)
 | Dia | Ação |

@@ -46,6 +46,7 @@ Dica: `grep -rn "EDITAR\|900000000\|horadorango.com.br" public`
 │   ├── robots.txt, sitemap.xml, site.webmanifest
 ├── vercel.json                  ← cabeçalhos para Vercel
 ├── netlify.toml                 ← diz ao Netlify que a raiz é /public
+├── scripts/set-domain.mjs       ← troca o domínio de exemplo pelo real
 ├── scripts/serve.mjs            ← servidor local que aplica os cabeçalhos de produção
 ├── scripts/gen-images.mjs       ← gera og-image.png e ícones
 ├── tests/smoke.mjs              ← teste automatizado no navegador
@@ -98,6 +99,12 @@ npm test             # em outro terminal; requer Playwright: npm i -D playwright
 | Hospedagem Apache (Hostinger, Locaweb…) | pago | Envie o **conteúdo** de `public/` (incluindo `.htaccess` e `.well-known`) para `public_html`. |
 
 Depois: aponte o domínio (Registro.br), ative HTTPS, e confira em https://securityheaders.com.
+
+## SEO, desempenho e medição
+- `npm run test:seo` confere título, descrição, títulos H1/H2/H3, JSON-LD, canonical, robots, sitemap, LCP, CLS, peso da página, ausência de terceiros e os eventos de conversão.
+- Fontes (Figtree e DM Serif Display) ficam em `public/fonts/`: nada é carregado do Google Fonts.
+- Trocar o domínio de exemplo pelo real: `node scripts/set-domain.mjs https://www.seudominio.com.br` (atualiza canonical, og:url, sitemap, robots e JSON-LD).
+- Eventos de conversão e como ligar o GA4: `docs/MARKETING.md`, seção 2.1.
 
 ## Atualizar CSS/JS
 Os arquivos ficam em cache por 7 dias. Ao mudar `styles.css` ou `main.js`, aumente a versão

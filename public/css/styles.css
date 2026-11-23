@@ -5,6 +5,11 @@
    Regra: nenhuma cor "solta" nos componentes; tudo vem dos tokens abaixo.
    ========================================================================== */
 
+/* Fontes hospedadas no próprio site: sem Google Fonts (mais rápido, sem enviar IP a terceiros) */
+@font-face { font-family: "Figtree"; font-style: normal; font-weight: 400 700; font-display: swap; src: url("/fonts/figtree.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-style: normal; font-weight: 400; font-display: swap; src: url("/fonts/dm-serif-display.woff2") format("woff2"); }
+@font-face { font-family: "DM Serif Display"; font-style: italic; font-weight: 400; font-display: swap; src: url("/fonts/dm-serif-display-italic.woff2") format("woff2"); }
+
 /* 1) TOKENS ---------------------------------------------------------------- */
 :root {
   /* Cores */
@@ -216,7 +221,7 @@ a, button, summary, .tab { touch-action: manipulation; -webkit-tap-highlight-col
 .perks { background: var(--c-ink); color: var(--c-on-dark); padding-block: var(--s-7); }
 .perks-grid { display: grid; gap: var(--s-6); }
 @media (min-width: 768px) { .perks-grid { grid-template-columns: repeat(3, 1fr); } }
-.perk h2 { font-size: var(--fs-lg); margin-bottom: var(--s-2); }
+.perk h3 { font-size: var(--fs-lg); margin-bottom: var(--s-2); }
 .perk p { color: var(--c-on-dark-soft); margin: 0; }
 .perk-icon { width: 36px; height: 36px; color: var(--c-gold); margin-bottom: var(--s-3); }
 
@@ -416,3 +421,11 @@ a, button, summary, .tab { touch-action: manipulation; -webkit-tap-highlight-col
 .menu .btn-sm { margin-top: var(--s-2); }
 
 [hidden] { display: none !important; } /* o atributo hidden sempre vence o display dos componentes */
+
+/* Aviso de cookies: só aparece se o analytics (GA4) for ativado em js/analytics.js */
+.consent { position: fixed; left: var(--s-4); right: var(--s-4); bottom: var(--s-4); z-index: 70; max-width: 520px; padding: var(--s-4); background: var(--c-ink); color: var(--c-on-dark); border-radius: var(--r-md); box-shadow: var(--shadow-2); }
+.consent p { margin: 0 0 var(--s-3); font-size: var(--fs-sm); color: var(--c-on-dark-soft); }
+.consent a { color: var(--c-on-dark); }
+.consent-actions { display: flex; gap: var(--s-3); }
+.btn-outline-light { border-color: var(--c-on-dark); color: var(--c-on-dark); background: transparent; }
+.btn-outline-light:hover { background: var(--c-on-dark); color: var(--c-ink); }

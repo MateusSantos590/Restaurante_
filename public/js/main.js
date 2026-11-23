@@ -169,6 +169,7 @@
           var on = t === tab;
           t.setAttribute("aria-selected", String(on));
           t.tabIndex = on ? 0 : -1;
+          if (on && focus !== undefined && window.hrTrack) window.hrTrack("menu_tab_view", { tab: t.textContent.trim() });
           var panel = document.getElementById(t.getAttribute("aria-controls"));
           if (panel) panel.hidden = !on;
         });
@@ -294,7 +295,10 @@
       // Só aceitamos valores que existem no <select> (impede valor forjado via DevTools).
       var allowed = Array.prototype.map.call(form.elements.tipo.options, function (o) { return o.value || o.text; }).filter(Boolean);
       if (allowed.indexOf(data.tipo) === -1) { showError("tipo", "Escolha o tipo de pedido."); firstInvalid = firstInvalid || form.elements.tipo; }
-      if (firstInvalid) { firstInvalid.focus(); return; }
+      if (firstInvalid) {
+        if (window.hrTrack) window.hrTrack("form_error", { form: "encomenda", field: firstInvalid.name });
+        firstInvalid.focus(); return;
+      }
 
       var parts = data.data.split("-");
       var msg = [
@@ -317,6 +321,8 @@
       a.click();
       a.remove();
       status.textContent = "Mensagem pronta! Confira no WhatsApp e toque em enviar.";
+      // Conversão principal do formulário (equivale a "generate_lead" no GA4)
+      if (window.hrTrack) window.hrTrack("generate_lead", { form: "encomenda", tipo: data.tipo, quantidade: Number(data.quantidade) });
     });
   }
 

@@ -9,20 +9,23 @@
     (_headers / vercel.json / .htaccess). Esta meta tag é um plano B para
     hospedagens que não deixam configurar cabeçalhos.
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self'; font-src 'self'; img-src 'self' data:; frame-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
-  <title>Hora do Rango Restaurante | Comida caseira em São Miguel Paulista</title>
-  <meta name="description" content="Restaurante em São Miguel Paulista, zona leste de São Paulo. Café da manhã e almoço, de segunda a sábado, das 7h30 às 18h20. Veja o prato do dia e peça pelo WhatsApp. R. Daniel Bernardo, 180.">
+  <title>Restaurante em São Miguel Paulista | Hora do Rango</title>
+  <meta name="description" content="Café da manhã e comida caseira em São Miguel Paulista, de segunda a sábado, das 7h30 às 18h20. Veja o prato do dia e peça pelo WhatsApp.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1">
   <link rel="canonical" href="https://www.horadorango.com.br/">
+  <link rel="alternate" hreflang="pt-BR" href="https://www.horadorango.com.br/">
+  <link rel="alternate" hreflang="x-default" href="https://www.horadorango.com.br/">
   <meta name="theme-color" content="#2a1b12">
 
   <!-- Open Graph / redes sociais (link compartilhado no WhatsApp, Instagram, Facebook) -->
   <meta property="og:type" content="restaurant">
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Hora do Rango Restaurante">
-  <meta property="og:title" content="Hora do Rango | Comida caseira em São Miguel Paulista">
-  <meta property="og:description" content="Café da manhã e prato do dia. Peça pelo WhatsApp. Segunda a sábado, das 7h30 às 18h20.">
+  <meta property="og:title" content="Restaurante em São Miguel Paulista | Hora do Rango">
+  <meta property="og:description" content="Café da manhã e almoço caseiro. Veja o prato do dia e peça pelo WhatsApp.">
   <meta property="og:url" content="https://www.horadorango.com.br/">
   <meta property="og:image" content="https://www.horadorango.com.br/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -33,52 +36,125 @@
   <link rel="apple-touch-icon" href="/img/apple-touch-icon.png">
   <link rel="manifest" href="/site.webmanifest">
 
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Figtree:wght@400;500;600;700&display=swap">
+  <link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/dm-serif-display.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="/fonts/dm-serif-display-italic.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="/css/styles.css?v=1">
+  <script src="/js/analytics.js?v=1" defer></script>
   <script src="/js/main.js?v=1" defer></script>
 
   <!-- Dados estruturados: ajudam o Google a mostrar o restaurante na busca local -->
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Restaurant",
-    "name": "Hora do Rango Restaurante",
-    "url": "https://www.horadorango.com.br/",
-    "image": "https://www.horadorango.com.br/img/og-image.png",
-    "servesCuisine": ["Brasileira", "Comida caseira"],
-    "priceRange": "$",
-    "telephone": "+55-11-96566-6268",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "R. Daniel Bernardo, 180",
-      "addressLocality": "São Paulo",
-      "addressRegion": "SP",
-      "postalCode": "08010-100",
-      "addressCountry": "BR"
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://www.horadorango.com.br/#website",
+      "url": "https://www.horadorango.com.br/",
+      "name": "Hora do Rango Restaurante",
+      "inLanguage": "pt-BR",
+      "publisher": {
+        "@id": "https://www.horadorango.com.br/#restaurant"
+      }
     },
-    "areaServed": "São Miguel Paulista",
-    "hasMap": "https://www.google.com/maps?cid=16128257789500995206",
-    "hasMenu": "https://www.horadorango.com.br/#cardapio",
-    "acceptsReservations": "True",
-    "openingHoursSpecification": [
-      { "@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"], "opens": "07:30", "closes": "18:20" }
-    ]
-  }
-  </script>
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "mainEntity": [
-      { "@type": "Question", "name": "Qual o horário de funcionamento?", "acceptedAnswer": { "@type": "Answer", "text": "De segunda a sábado, das 7h30 às 18h20. Domingo fechado." } },
-      { "@type": "Question", "name": "Vocês servem café da manhã?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Abrimos às 7h30, de segunda a sábado." } },
-      { "@type": "Question", "name": "Onde fica o Hora do Rango?", "acceptedAnswer": { "@type": "Answer", "text": "Na R. Daniel Bernardo, 180, São Miguel Paulista, São Paulo, CEP 08010-100." } },
-      { "@type": "Question", "name": "Como faço um pedido?", "acceptedAnswer": { "@type": "Answer", "text": "Pelo WhatsApp (11) 96566-6268. Informe o prato e se vai retirar ou comer no local." } },
-      { "@type": "Question", "name": "Vocês fazem encomenda para empresas ou eventos?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Use o formulário do site ou chame no WhatsApp informando quantidade e data." } }
-    ]
-  }
+    {
+      "@type": "Restaurant",
+      "@id": "https://www.horadorango.com.br/#restaurant",
+      "name": "Hora do Rango Restaurante",
+      "url": "https://www.horadorango.com.br/",
+      "description": "Restaurante de comida caseira e café da manhã em São Miguel Paulista, São Paulo.",
+      "image": [
+        "https://www.horadorango.com.br/img/og-image.png"
+      ],
+      "servesCuisine": [
+        "Comida caseira",
+        "Brasileira"
+      ],
+      "telephone": "+55-11-96566-6268",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "R. Daniel Bernardo, 180",
+        "addressLocality": "São Paulo",
+        "addressRegion": "SP",
+        "postalCode": "08010-100",
+        "addressCountry": "BR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": -23.4945468,
+        "longitude": -46.442861
+      },
+      "areaServed": "São Miguel Paulista",
+      "hasMap": "https://www.google.com/maps?cid=16128257789500995206",
+      "sameAs": [
+        "https://www.google.com/maps?cid=16128257789500995206"
+      ],
+      "menu": "https://www.horadorango.com.br/#cardapio",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Friday",
+            "Saturday"
+          ],
+          "opens": "07:30",
+          "closes": "18:20"
+        }
+      ]
+    },
+    {
+      "@id": "https://www.horadorango.com.br/#faq",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Qual o horário de funcionamento?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "De segunda a sábado, das 7h30 às 18h20. Domingo fechamos."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês servem café da manhã?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim. A porta abre às 7h30, de segunda a sábado. Veja os itens na aba \"Café da manhã\" do cardápio."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Onde fica o restaurante?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Na R. Daniel Bernardo, 180, em São Miguel Paulista, São Paulo (CEP 08010-100). O botão \"Como chegar\" abre o trajeto no Google Maps."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Como faço um pedido?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Pelo WhatsApp, no (11) 96566-6268. Diga o prato e se vai retirar ou comer aqui. A gente confirma o valor e o horário na conversa."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Vocês fazem encomenda para empresas ou eventos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Sim, pelo formulário da seção de encomendas ou direto no WhatsApp. Informe a quantidade e a data."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
@@ -213,21 +289,22 @@
     </section>
 
     <!-- ============ DIFERENCIAIS ============ -->
-    <section class="perks" aria-label="Diferenciais">
+    <section class="perks">
+      <h2 class="sr-only">Por que escolher o Hora do Rango</h2>
       <div class="container perks-grid">
         <article class="perk" data-reveal>
           <svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pot"/></svg>
-          <h2>Um prato por dia</h2>
+          <h3>Um prato por dia</h3>
           <p>O cardápio muda de segunda a sábado. O prato de hoje aparece em destaque.</p>
         </article>
         <article class="perk" data-reveal>
           <svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>
-          <h2>Café da manhã</h2>
+          <h3>Café da manhã</h3>
           <p>A porta abre às 7h30, de segunda a sábado. Tem café, pão na chapa e lanches antes do almoço.</p>
         </article>
         <article class="perk" data-reveal>
           <svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
-          <h2>Pedido pelo WhatsApp</h2>
+          <h3>Pedido pelo WhatsApp</h3>
           <p>Escolha o prato, mande a mensagem e combine os detalhes direto com a gente.</p>
         </article>
       </div>
