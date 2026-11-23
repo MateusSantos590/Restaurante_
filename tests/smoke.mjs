@@ -91,6 +91,20 @@ const mapLinks = await p2.$$eval("a[href*='google.com/maps'], a[href*='goo.gl']"
 check(mapLinks.length >= 3 && mapLinks.every(h => /^https:\/\/www\.google\.com\/maps(\/dir\/\?api=1&destination=|\?cid=)/.test(h)),
   `links do Google Maps no formato oficial (${mapLinks.length})`);
 
+// Mapa: se outra política de segurança bloquear o iframe do Google (ex.: página
+// embutida em outro site), mostra o botão "Abrir no Google Maps" em vez de erro.
+{
+  const ctx = await browser.newContext();
+  await ctx.route(BASE + "/", async r => { const res = await r.fetch(); r.fulfill({ response: res, headers: { ...res.headers(), "content-security-policy": "frame-src 'none'" } }); });
+  const pm = await ctx.newPage();
+  await pm.goto(BASE + "/");
+  await pm.click("[data-map-load]");
+  await pm.waitForTimeout(1500);
+  const ok = await pm.evaluate(() => !document.querySelector("[data-map] iframe") && !document.querySelector("[data-map-facade]").hidden);
+  check(ok && await pm.locator("[data-map-facade] a").isVisible(), "mapa bloqueado cai no botão 'Abrir no Google Maps'");
+  await ctx.close();
+}
+
 // Cabeçalhos de segurança
 const res = await p2.request.get(BASE + "/");
 const h = res.headers();

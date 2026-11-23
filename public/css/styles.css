@@ -415,3 +415,8 @@ a, button, summary, .tab { touch-action: manipulation; -webkit-tap-highlight-col
 .faq-list details[open] summary::after { transform: rotate(45deg); }
 .faq-list details p { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
 .menu .btn-sm { margin-top: var(--s-2); }
+
+.map-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-3); }
+.btn-outline-light { border-color: var(--c-on-dark); color: var(--c-on-dark); background: transparent; }
+.btn-outline-light:hover { background: var(--c-on-dark); color: var(--c-ink); }
+[hidden] { display: none !important; } /* o atributo hidden sempre vence o display dos componentes */

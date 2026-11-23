@@ -485,10 +485,13 @@
           Isso deixa a página mais rápida e evita enviar dados ao Google sem consentimento (LGPD).
         -->
         <div class="map" data-map data-reveal>
-          <div class="map-facade">
+          <div class="map-facade" data-map-facade>
             <svg class="map-pin" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
-            <p>O mapa é carregado do Google Maps somente se você permitir.</p>
-            <button class="btn btn-light" type="button" data-map-load>Mostrar mapa</button>
+            <p data-map-msg>O mapa é carregado do Google Maps somente se você permitir.</p>
+            <div class="map-actions">
+              <button class="btn btn-light" type="button" data-map-load>Mostrar mapa aqui</button>
+              <a class="btn btn-outline-light" href="https://www.google.com/maps?cid=16128257789500995206" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
+            </div>
           </div>
         </div>
       </div>
