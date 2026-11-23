@@ -1,0 +1,3 @@
+[build]
+  publish = "public"
+# Cabeçalhos de segurança ficam em public/_headers.

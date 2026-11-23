@@ -1,0 +1,6 @@
+# Política de divulgação responsável (RFC 9116)
+# EDITAR: troque o e-mail por um contato real do restaurante/responsável técnico.
+Contact: mailto:seguranca@horadorango.com.br
+Expires: 2027-11-23T00:00:00.000Z
+Preferred-Languages: pt-BR, en
+Canonical: https://www.horadorango.com.br/.well-known/security.txt

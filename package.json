@@ -1,0 +1,12 @@
+{
+  "name": "hora-do-rango-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Landing page do Hora do Rango Restaurante (São Miguel Paulista, SP).",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.mjs",
+    "test": "node tests/smoke.mjs"
+  },
+  "engines": { "node": ">=18" }
+}

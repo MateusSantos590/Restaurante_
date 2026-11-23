@@ -1,0 +1,30 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read   # princípio do menor privilégio: o CI só lê o repositório
+
+jobs:
+  smoke:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Instalar Playwright (só para o teste)
+        run: npm install --no-save playwright@1.48.2 && npx playwright install --with-deps chromium
+      - name: Subir servidor local
+        run: node scripts/serve.mjs &
+      - name: Teste de fumaça (layout, acessibilidade básica, formulário e cabeçalhos de segurança)
+        run: npx --yes wait-on@8.0.1 http://localhost:8080 && npm test
+      - name: Guardar screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: screenshots
+          path: screenshots/
