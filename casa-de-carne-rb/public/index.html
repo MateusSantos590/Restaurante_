@@ -128,8 +128,8 @@
       <div class="container hero-grid">
         <div class="hero-copy">
           <p class="eyebrow eyebrow-light">Açougue no Jardim das Oliveiras</p>
-          <h1 id="hero-titulo">Carne fresca <span>perto de casa.</span></h1>
-          <p class="lead">Cortes para o dia a dia e para o churrasco do fim de semana. Aberto todos os dias, inclusive domingo de manhã.</p>
+          <h1 id="hero-titulo"><span class="l1">Carne fresca</span> <span class="l2">perto de casa.</span></h1>
+          <p class="lead">Cortes para o almoço da semana e para o churrasco de sábado. A loja abre todos os dias, e no domingo fica aberta até as 14h.</p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-lg" href="tel:+551125665264" data-contact data-wa="Olá! Quero fazer um pedido.">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>
@@ -165,10 +165,10 @@
     <!-- EDITAR: confirme com o açougue quais cortes ele vende. Não há preços: eles mudam e são passados no atendimento. -->
     <section class="section cuts" id="cortes" aria-labelledby="cortes-titulo">
       <div class="container">
-        <header class="section-head">
+        <header class="section-head" data-reveal>
           <p class="eyebrow">Cortes</p>
           <h2 id="cortes-titulo">O que tem no balcão</h2>
-          <p>O preço muda com o mercado. Toque em "Preço de hoje" no corte que você quer e pergunte o valor do dia.</p>
+          <p>O preço da carne muda toda semana, por isso ele não fica no site. Toque em "Preço de hoje" no corte que você quer e pergunte o valor.</p>
         </header>
 
         <div class="tabs" data-tabs>
@@ -223,14 +223,14 @@
     <!-- ============ CALCULADORA DE CHURRASCO ============ -->
     <section class="section bbq" id="churrasco" aria-labelledby="churrasco-titulo">
       <div class="container bbq-grid">
-        <div>
+        <div data-reveal>
           <p class="eyebrow eyebrow-light">Calculadora</p>
           <h2 id="churrasco-titulo">Quanto de carne para o seu churrasco?</h2>
-          <p>Diga quantas pessoas vão e a calculadora separa a quantidade por tipo de carne. Depois é só pedir com a lista pronta.</p>
-          <p class="note">É uma estimativa: 400 g por adulto e 200 g por criança, somando todas as carnes. Se a turma come muito, aumente os adultos.</p>
+          <p>Coloque quantas pessoas vão e marque as carnes. A conta aparece na hora, separada por tipo, e o botão manda a lista para o açougue.</p>
+          <p class="note">A conta usa 400 g por adulto e 200 g por criança, somando todas as carnes. Se a turma come bem, coloque mais adultos.</p>
         </div>
 
-        <form class="calc" data-calc novalidate>
+        <form class="calc" data-calc novalidate data-reveal>
           <div class="calc-row">
             <div class="field">
               <label for="c-adultos">Adultos</label>
@@ -267,24 +267,67 @@
     <!-- ============ COMO PEDIR ============ -->
     <section class="section steps" id="como-pedir" aria-labelledby="pedir-titulo">
       <div class="container">
-        <header class="section-head">
+        <header class="section-head" data-reveal>
           <p class="eyebrow">Como pedir</p>
           <h2 id="pedir-titulo">Separe pelo telefone, retire no balcão</h2>
         </header>
         <ol class="steps-grid">
-          <li><span class="step-n" aria-hidden="true">01</span><h3>Chame a gente</h3><p>Ligue ou mande mensagem com os cortes e a quantidade.</p></li>
-          <li><span class="step-n" aria-hidden="true">02</span><h3>Combine o corte</h3><p>Bife fino, peça inteira, moída na hora: diga como prefere.</p></li>
-          <li><span class="step-n" aria-hidden="true">03</span><h3>Retire na loja</h3><p>Passe no horário combinado. Entrega, se houver, a gente confirma no atendimento.</p></li>
+          <li><span class="step-n" aria-hidden="true">01</span><h3>Chame a gente</h3><p>Ligue e diga os cortes e quantos quilos você quer.</p></li>
+          <li><span class="step-n" aria-hidden="true">02</span><h3>Combine o corte</h3><p>Diga se prefere em bife, em peça ou moída. A gente confirma o valor.</p></li>
+          <li><span class="step-n" aria-hidden="true">03</span><h3>Retire na loja</h3><p>Passe no horário combinado. Se quiser entrega, pergunte no atendimento.</p></li>
         </ol>
+      </div>
+    </section>
+
+    <!-- ============ A LOJA (fotos) ============
+         Fica escondida (hidden) até as fotos reais existirem.
+         Para ativar: coloque as fotos em casa-de-carne-rb/fotos-originais/ e rode
+         python3 casa-de-carne-rb/fotos.py ; depois apague o atributo hidden abaixo. -->
+    <section class="section store" id="a-loja" aria-labelledby="loja-titulo" hidden>
+      <div class="container">
+        <header class="section-head" data-reveal>
+          <p class="eyebrow">A loja</p>
+          <h2 id="loja-titulo">Conheça o balcão antes de vir</h2>
+        </header>
+        <div class="gallery">
+          <figure class="photo">
+            <picture>
+              <source type="image/webp" srcset="/img/loja/fachada-640.webp 640w, /img/loja/fachada-1280.webp 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw">
+              <img src="/img/loja/fachada-1280.jpg" srcset="/img/loja/fachada-640.jpg 640w, /img/loja/fachada-1280.jpg 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw" width="1280" height="960" alt="Fachada da Casa de Carne RB na Rua Manuel Lemes da Silva, 426" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Fachada, R. Manuel Lemes da Silva, 426</figcaption>
+          </figure>
+          <figure class="photo">
+            <picture>
+              <source type="image/webp" srcset="/img/loja/balcao-640.webp 640w, /img/loja/balcao-1280.webp 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw">
+              <img src="/img/loja/balcao-1280.jpg" srcset="/img/loja/balcao-640.jpg 640w, /img/loja/balcao-1280.jpg 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw" width="1280" height="960" alt="Balcão refrigerado com os cortes do dia" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Balcão</figcaption>
+          </figure>
+          <figure class="photo">
+            <picture>
+              <source type="image/webp" srcset="/img/loja/cortes-640.webp 640w, /img/loja/cortes-1280.webp 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw">
+              <img src="/img/loja/cortes-1280.jpg" srcset="/img/loja/cortes-640.jpg 640w, /img/loja/cortes-1280.jpg 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw" width="1280" height="960" alt="Cortes de carne bovina prontos para venda" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Cortes</figcaption>
+          </figure>
+          <figure class="photo">
+            <picture>
+              <source type="image/webp" srcset="/img/loja/estacionamento-640.webp 640w, /img/loja/estacionamento-1280.webp 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw">
+              <img src="/img/loja/estacionamento-1280.jpg" srcset="/img/loja/estacionamento-640.jpg 640w, /img/loja/estacionamento-1280.jpg 1280w" sizes="(min-width: 1240px) 580px, (min-width: 640px) 50vw, 100vw" width="1280" height="960" alt="Frente da loja com vagas para estacionar" loading="lazy" decoding="async">
+            </picture>
+            <figcaption>Onde estacionar</figcaption>
+          </figure>
+        </div>
       </div>
     </section>
 
     <!-- ============ AVALIAÇÕES ============ -->
     <section class="section reviews" aria-labelledby="avaliacoes-titulo">
-      <div class="container reviews-box">
+      <div class="container reviews-box" data-reveal>
         <div>
           <h2 id="avaliacoes-titulo">Já comprou aqui?</h2>
-          <p>Sua avaliação no Google ajuda os vizinhos a conhecer o açougue.</p>
+          <p>Conte no Google como foi. Quem mora no bairro e ainda não conhece a loja lê as avaliações antes de vir.</p>
         </div>
         <a class="btn btn-light" href="https://www.google.com/maps?cid=11692658622451075711" target="_blank" rel="noopener noreferrer">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-star"/></svg>
@@ -296,7 +339,7 @@
     <!-- ============ DÚVIDAS ============ -->
     <section class="section faq" id="duvidas" aria-labelledby="duvidas-titulo">
       <div class="container faq-wrap">
-        <header class="section-head">
+        <header class="section-head" data-reveal>
           <p class="eyebrow">Dúvidas</p>
           <h2 id="duvidas-titulo">Perguntas frequentes</h2>
         </header>
@@ -312,7 +355,7 @@
     <!-- ============ LOCALIZAÇÃO ============ -->
     <section class="section location" id="localizacao" aria-labelledby="local-titulo">
       <div class="container location-grid">
-        <div>
+        <div data-reveal>
           <p class="eyebrow">Endereço e horário</p>
           <h2 id="local-titulo">Passe no balcão</h2>
           <address class="address">R. Manuel Lemes da Silva, 426<br>Jardim das Oliveiras, São Paulo - SP<br>CEP 08122-140</address>
@@ -329,7 +372,7 @@
             </tbody>
           </table>
         </div>
-        <div class="map-card">
+        <div class="map-card" data-reveal>
           <svg class="map-pin" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
           <p>R. Manuel Lemes da Silva, 426<br>Jardim das Oliveiras</p>
           <div class="map-actions">
@@ -345,8 +388,8 @@
 
     <!-- ============ CTA FINAL ============ -->
     <section class="cta-final" aria-labelledby="cta-titulo">
-      <div class="container cta-inner">
-        <h2 id="cta-titulo">Vai ter churrasco? Separa a carne com a gente.</h2>
+      <div class="container cta-inner" data-reveal>
+        <h2 id="cta-titulo">Vai ter churrasco? Separe a carne com a gente.</h2>
         <a class="btn btn-light btn-lg" href="tel:+551125665264" data-contact data-wa="Olá! Quero separar carne para um churrasco.">
           <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-phone"/></svg>
           <span data-contact-label>(11) 2566-5264</span>

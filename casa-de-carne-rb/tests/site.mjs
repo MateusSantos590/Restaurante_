@@ -85,7 +85,7 @@ for (const sel of [".hero-actions a[data-contact]", ".price-link", ".map-card a[
 await page.locator("#tab-porco").dispatchEvent("click");
 await page.fill("#c-adultos", "12");
 await page.evaluate(() => { HTMLAnchorElement.prototype.click = function () { window.__opened = this.href; }; });
-await page.click("[data-calc] button[type=submit]", { force: true });
+await page.locator("[data-calc]").evaluate(f => f.requestSubmit()); // envia sem depender de a barra fixa cobrir o botão
 const ev = await page.evaluate(() => window.__ev);
 for (const e of ["phone_click", "price_request_click", "directions_click", "maps_profile_click", "cut_tab_view", "bbq_calc_used", "generate_lead"]) check(ev.includes(e), `evento "${e}"`);
 check(/^tel:\+551125665264$/.test(await page.evaluate(() => window.__opened)), "sem WhatsApp configurado, a lista abre a ligação");
@@ -98,6 +98,27 @@ await p2.goto(BASE + "/", { waitUntil: "networkidle" });
 check(/^https:\/\/wa\.me\/5511999998888\?text=/.test(await p2.getAttribute(".hero-actions a[data-contact]", "href")), "com WhatsApp: botões viram wa.me com mensagem");
 check(/picanha/.test(decodeURIComponent(await p2.getAttribute(".price-link", "href"))), "com WhatsApp: 'Preço de hoje' pergunta pelo corte");
 await ctx2.close();
+
+/* ---------- Animações e rolagem ---------- */
+{
+  const pa = await browser.newPage({ viewport: { width: 1280, height: 800 } });
+  await pa.goto(BASE + "/", { waitUntil: "networkidle" });
+  const pending0 = await pa.locator(".is-pending").count();
+  check(pending0 > 0, `${pending0} blocos esperam a rolagem para aparecer`);
+  check(await pa.evaluate(() => [...document.querySelectorAll(".is-pending")].every(e => e.getBoundingClientRect().top > innerHeight)), "nada visível no carregamento fica escondido (sem piscar)");
+  await pa.evaluate(async () => { for (let y = 0; y <= document.body.scrollHeight; y += 250) { scrollTo(0, y); await new Promise(r => setTimeout(r, 60)); } });
+  await pa.waitForTimeout(900);
+  const left = await pa.$$eval(".is-pending", els => els.filter(e => !e.closest("[hidden]")).length);
+  check(left === 0, `tudo apareceu depois de rolar a página (faltando: ${left})`);
+  await pa.locator("#churrasco").scrollIntoViewIfNeeded(); await pa.waitForTimeout(400);
+  check(await pa.getAttribute(".nav a[href='#churrasco']", "aria-current") === "true", "menu marca a seção visível (Calculadora)");
+  check(await pa.locator("#a-loja").isHidden(), "galeria fica escondida enquanto não há fotos reais");
+  await pa.close();
+  const ctxR = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: "reduce" });
+  const pr = await ctxR.newPage(); await pr.goto(BASE + "/", { waitUntil: "networkidle" });
+  check(await pr.locator(".is-pending").count() === 0 && await pr.evaluate(() => getComputedStyle(document.querySelector(".hero h1 .l2")).animationName === "none"), "com 'reduzir movimento', nada anima e tudo aparece");
+  await ctxR.close();
+}
 
 /* ---------- Segurança ---------- */
 const h = (await page.request.get(BASE + "/")).headers();

@@ -179,7 +179,11 @@
 
     function render() {
       var r = compute();
-      totalEl.textContent = kg(r.total);
+      if (totalEl.textContent !== kg(r.total)) {
+        totalEl.textContent = kg(r.total);
+        var box = totalEl.parentNode;
+        box.classList.remove("is-bump"); void box.offsetWidth; box.classList.add("is-bump"); // reinicia a animação
+      }
       listEl.replaceChildren.apply(listEl, r.items.map(function (it) {
         var li = document.createElement("li");
         var a = document.createElement("span"); a.textContent = it.name;
@@ -229,10 +233,55 @@
     if (!art || !("IntersectionObserver" in window)) return;
     new IntersectionObserver(function (en) { art.classList.toggle("is-paused", !en[0].isIntersecting); }).observe(art);
   }
+  /* ------------------------------------------------------------------
+     7. Animação ao rolar, com itens de lista em sequência
+     ------------------------------------------------------------------ */
+  function initReveal() {
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches || !("IntersectionObserver" in window)) return;
+    // Itens de lista entram um depois do outro (--i define o atraso)
+    ["[data-cuts]", ".steps-grid", ".faq-list", ".gallery"].forEach(function (sel) {
+      document.querySelectorAll(sel).forEach(function (list) {
+        Array.prototype.forEach.call(list.children, function (el, i) {
+          el.setAttribute("data-reveal", "");
+          el.style.setProperty("--i", String(i % 4)); // CSSOM: permitido pela CSP
+        });
+      });
+    });
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.remove("is-pending"); io.unobserve(e.target); }
+      });
+    }, { rootMargin: "0px 0px -8% 0px" });
+    var vh = window.innerHeight;
+    document.querySelectorAll("[data-reveal]").forEach(function (el) {
+      // Só esconde o que está abaixo da tela agora: nada "pisca" no carregamento
+      if (el.getBoundingClientRect().top > vh) { el.classList.add("is-pending"); io.observe(el); }
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     8. Menu marca a seção que está na tela
+     ------------------------------------------------------------------ */
+  function initScrollSpy() {
+    if (!("IntersectionObserver" in window)) return;
+    var links = {};
+    document.querySelectorAll(".nav ul a[href^='#']").forEach(function (a) { links[a.getAttribute("href").slice(1)] = a; });
+    var current = null;
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (!e.isIntersecting) return;
+        if (current) current.removeAttribute("aria-current");
+        current = links[e.target.id];
+        if (current) current.setAttribute("aria-current", "true");
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(links).forEach(function (id) { var s = document.getElementById(id); if (s) io.observe(s); });
+  }
+
   function initYear() { var y = document.querySelector("[data-year]"); if (y) y.textContent = String(new Date().getFullYear()); }
 
   function boot() {
-    [initContact, initStatus, initHeader, initTabs, initPriceLinks, initCalc, initStampPause, initYear].forEach(function (fn) {
+    [initContact, initStatus, initHeader, initTabs, initPriceLinks, initCalc, initStampPause, initReveal, initScrollSpy, initYear].forEach(function (fn) {
       try { fn(); } catch (err) { console.error(err); }
     });
   }

@@ -20,6 +20,20 @@ Procure por `EDITAR` no código.
 
 O site **não mostra preços** de propósito: preço de carne muda toda semana e preço errado no site vira problema no balcão. Cada corte tem o botão "Preço de hoje".
 
+## Fotos da loja (galeria pronta, 4:3)
+A seção "A loja" já está no HTML, escondida até existirem fotos reais.
+1. Tire 4 fotos com o celular na horizontal e salve em `casa-de-carne-rb/fotos-originais/`: `fachada.jpg`, `balcao.jpg`, `cortes.jpg`, `estacionamento.jpg`.
+2. Rode `python3 casa-de-carne-rb/fotos.py`. O script gira, recorta no centro para 4:3, gera 640 e 1280 px em WebP e JPEG e apaga os metadados (inclusive GPS).
+3. Em `public/index.html`, apague o atributo `hidden` da seção `id="a-loja"` e confira o texto alternativo (`alt`) de cada foto. Se a loja não tiver estacionamento, troque essa foto e a legenda.
+
+Dicas para a foto: luz do dia, celular na horizontal, assunto no centro (as bordas podem ser cortadas no 4:3).
+
+## Animações
+- Entrada do topo em sequência e selo giratório (pausa quando sai da tela).
+- Blocos aparecem ao rolar, itens de lista um depois do outro. O que já está na tela no carregamento nunca é escondido.
+- Menu marca a seção visível. Total da calculadora "pula" quando muda.
+- Tudo usa só `transform` e `opacity` (60 fps medidos com CPU 4x mais lenta) e desliga com "reduzir movimento" no aparelho.
+
 ## Estrutura
 ```
 casa-de-carne-rb/
@@ -34,6 +48,7 @@ casa-de-carne-rb/
 │   └── robots.txt, sitemap.xml, site.webmanifest, .well-known/security.txt
 ├── tests/site.mjs             ← teste completo (layout, SEO, calculadora, eventos, segurança)
 ├── scripts-gen-images.mjs     ← gera og-image e ícones
+├── fotos.py                   ← prepara as fotos da loja (4:3, WebP/JPEG, sem GPS)
 └── docs/MARKETING.md          ← plano de marketing local
 ```
 
