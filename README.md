@@ -23,6 +23,8 @@ conteúdo de exemplo, marcado com `EDITAR` no código. Procure por `EDITAR` e tr
 | E-mails de contato e segurança | `politica-de-privacidade.html`, `.well-known/security.txt`, `SECURITY.md` |
 | Razão social / CNPJ (recomendado) | `politica-de-privacidade.html` |
 
+Marketing: veja `docs/MARKETING.md` (Google Perfil da Empresa, links rastreáveis, rotina semanal).
+
 Dica: `grep -rn "EDITAR\|900000000\|horadorango.com.br" public`
 
 ---

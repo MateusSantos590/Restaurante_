@@ -99,6 +99,14 @@
       var dish = item.querySelector("h3");
       var target = document.querySelector("[data-today-dish]");
       if (dish && target) target.textContent = dish.textContent;
+      // Pedido já começa com o prato do dia: menos digitação, mais pedidos.
+      if (dish && CONFIG.hours[now.day]) {
+        var msg = "Olá! Vi o prato de hoje no site (" + dish.textContent + "). Quero fazer um pedido.";
+        document.querySelectorAll("a[data-wa^='Olá! Quero fazer um pedido']").forEach(function (a) {
+          a.setAttribute("data-wa", msg);
+        });
+        initWhatsAppLinks();
+      }
       if (dishDay !== now.day) {
         var label = document.querySelector(".today-label");
         if (label) label.textContent = "Na segunda tem";
@@ -355,13 +363,20 @@
     });
   }
 
+  function initShare() {
+    var a = document.querySelector("[data-share]");
+    if (!a) return;
+    var url = location.origin + location.pathname + "#cardapio";
+    a.href = "https://wa.me/?text=" + encodeURIComponent("Olha o cardápio do Hora do Rango, em São Miguel Paulista: " + url);
+  }
+
   function initYear() {
     var y = document.querySelector("[data-year]");
     if (y) y.textContent = String(new Date().getFullYear());
   }
 
   function boot() {
-    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initMap, initReveal, initYear]
+    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initMap, initReveal, initShare, initYear]
       .forEach(function (fn) {
         try { fn(); } catch (err) { console.error(err); } // uma falha não derruba o resto
       });
