@@ -343,7 +343,6 @@ a, button, summary, .tab { touch-action: manipulation; -webkit-tap-highlight-col
 .map-facade { position: absolute; inset: 0; display: grid; place-content: center; justify-items: center; gap: var(--s-3); padding: var(--s-5); text-align: center; color: var(--c-on-dark); }
 .map-facade p { margin: 0; max-width: 30ch; color: var(--c-on-dark-soft); }
 .map-pin { width: 56px; height: 56px; color: var(--c-gold); }
-.map iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 
 /* CTA final */
 .cta-final { padding-block: var(--s-8); text-align: center; }
@@ -416,7 +415,4 @@ a, button, summary, .tab { touch-action: manipulation; -webkit-tap-highlight-col
 .faq-list details p { margin: 0 0 var(--s-4); color: var(--c-ink-soft); }
 .menu .btn-sm { margin-top: var(--s-2); }
 
-.map-actions { display: flex; flex-wrap: wrap; justify-content: center; gap: var(--s-3); }
-.btn-outline-light { border-color: var(--c-on-dark); color: var(--c-on-dark); background: transparent; }
-.btn-outline-light:hover { background: var(--c-on-dark); color: var(--c-ink); }
 [hidden] { display: none !important; } /* o atributo hidden sempre vence o display dos componentes */

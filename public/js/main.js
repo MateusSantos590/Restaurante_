@@ -24,10 +24,7 @@
       4: ["07:30", "18:20"],
       5: ["07:30", "18:20"],
       6: ["07:30", "18:20"]
-    },
-    mapEmbed: "https://www.google.com/maps?q=" +
-      encodeURIComponent("Hora do Rango Restaurante, R. Daniel Bernardo, 180 - São Miguel Paulista, São Paulo - SP, 08010-100") +
-      "&output=embed"
+    }
   });
 
   var WA_PATTERN = /^\d{12,13}$/;
@@ -324,50 +321,7 @@
   }
 
   /* ----------------------------------------------------------------------
-     6. Mapa sob demanda (privacidade + performance)
-     ---------------------------------------------------------------------- */
-  function initMap() {
-    var box = document.querySelector("[data-map]");
-    var facade = document.querySelector("[data-map-facade]");
-    var btn = document.querySelector("[data-map-load]");
-    var msg = document.querySelector("[data-map-msg]");
-    if (!box || !facade || !btn) return;
-    var iframe = null;
-
-    // Se o mapa embutido não puder carregar (ex.: a página está dentro de outro site
-    // cuja política de segurança proíbe iframes do Google, ou o Maps está fora do ar),
-    // voltamos para o cartão com o botão "Abrir no Google Maps" em vez de mostrar erro.
-    function fallback() {
-      if (iframe) { iframe.remove(); iframe = null; }
-      facade.hidden = false;
-      btn.hidden = true;
-      if (msg) msg.textContent = "Não deu para mostrar o mapa aqui. Abra direto no Google Maps:";
-      var link = facade.querySelector("a");
-      if (link) { link.className = "btn btn-light"; link.focus(); }
-    }
-
-    document.addEventListener("securitypolicyviolation", function (e) {
-      if (iframe && /google\./.test(e.blockedURI || "") && /frame-src|child-src|default-src/.test(e.effectiveDirective || e.violatedDirective || "")) {
-        fallback();
-      }
-    });
-
-    btn.addEventListener("click", function () {
-      iframe = document.createElement("iframe");
-      iframe.src = CONFIG.mapEmbed;
-      iframe.title = "Mapa: Hora do Rango, R. Daniel Bernardo, 180, São Miguel Paulista";
-      iframe.referrerPolicy = "no-referrer-when-downgrade";
-      // sandbox limita o que o iframe pode fazer na nossa página
-      iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
-      iframe.setAttribute("allowfullscreen", "");
-      facade.hidden = true;
-      box.appendChild(iframe);
-      iframe.focus();
-    });
-  }
-
-  /* ----------------------------------------------------------------------
-     7. Animação de entrada ao rolar (só transform/opacity)
+     6. Animação de entrada ao rolar (só transform/opacity)
      ---------------------------------------------------------------------- */
   function initReveal() {
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -407,7 +361,7 @@
   }
 
   function boot() {
-    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initMap, initReveal, initShare, initPlatePause, initYear]
+    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initReveal, initShare, initPlatePause, initYear]
       .forEach(function (fn) {
         try { fn(); } catch (err) { console.error(err); } // uma falha não derruba o resto
       });

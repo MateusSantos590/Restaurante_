@@ -9,7 +9,7 @@
     (_headers / vercel.json / .htaccess). Esta meta tag é um plano B para
     hospedagens que não deixam configurar cabeçalhos.
   -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src https://www.google.com; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data:; frame-src 'none'; connect-src 'self'; object-src 'none'; base-uri 'none'; form-action 'self'; upgrade-insecure-requests">
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Hora do Rango Restaurante | Comida caseira em São Miguel Paulista</title>
@@ -480,18 +480,12 @@
           </div>
         </div>
 
-        <!--
-          Mapa com "fachada": o Google Maps só carrega quando a pessoa clica.
-          Isso deixa a página mais rápida e evita enviar dados ao Google sem consentimento (LGPD).
-        -->
-        <div class="map" data-map data-reveal>
-          <div class="map-facade" data-map-facade>
+        <!-- Cartão de mapa: abre o Google Maps (app no celular). Sem iframe: mais leve e sem dados enviados ao Google sem clique. -->
+        <div class="map" data-reveal>
+          <div class="map-facade">
             <svg class="map-pin" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
-            <p data-map-msg>O mapa é carregado do Google Maps somente se você permitir.</p>
-            <div class="map-actions">
-              <button class="btn btn-light" type="button" data-map-load>Mostrar mapa aqui</button>
-              <a class="btn btn-outline-light" href="https://www.google.com/maps?cid=16128257789500995206" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
-            </div>
+            <p>R. Daniel Bernardo, 180<br>São Miguel Paulista, São Paulo</p>
+            <a class="btn btn-light" href="https://www.google.com/maps?cid=16128257789500995206" target="_blank" rel="noopener noreferrer">Abrir no Google Maps</a>
           </div>
         </div>
       </div>

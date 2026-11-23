@@ -61,7 +61,7 @@ Dica: `grep -rn "EDITAR\|900000000\|horadorango.com.br" public`
 5. **Como pedir**: 3 passos.
 6. **Avaliações**: leva às avaliações reais do Google (não inventamos depoimentos).
 7. **Encomendas**: formulário que monta a mensagem e abre o WhatsApp (sem servidor).
-8. **Localização**: endereço, horários com o dia atual destacado, "Como chegar" e mapa sob demanda.
+8. **Localização**: endereço, horários com o dia atual destacado, "Como chegar" e atalho para o Google Maps.
 9. **CTA final** e **rodapé**. No celular, botão flutuante de WhatsApp.
 
 ### SEO local
