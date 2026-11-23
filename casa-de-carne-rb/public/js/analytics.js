@@ -36,6 +36,7 @@
   /* ---------- Cliques: um único listener para a página inteira ---------- */
   function where(el) {
     if (el.closest(".mobile-bar")) return "barra_celular";
+    if (el.closest(".ig-float")) return "botao_flutuante";
     if (el.closest(".topbar")) return "faixa_topo";
     if (el.closest(".site-header")) return "cabecalho";
     if (el.closest(".site-footer")) return "rodape";
@@ -50,6 +51,7 @@
     var p = { link_location: where(a), link_text: (a.textContent || "").replace(/\s+/g, " ").trim() };
 
     if (a.hasAttribute("data-price")) track("price_request_click", Object.assign(p, { corte: a.getAttribute("data-price"), canal: /^tel:/.test(href) ? "telefone" : "whatsapp" }));
+    else if (/instagram\.com/.test(href)) track("instagram_click", p);
     else if (/^https:\/\/(wa\.me|api\.whatsapp\.com)\//.test(href)) track("whatsapp_click", p);
     else if (/^tel:/.test(href)) track("phone_click", p);
     else if (/google\.com\/maps\/dir\//.test(href)) track("directions_click", p);

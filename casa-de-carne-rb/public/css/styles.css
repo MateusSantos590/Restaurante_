@@ -351,6 +351,14 @@ a, button, summary, .tab, .chip { touch-action: manipulation; -webkit-tap-highli
 .footer-bottom p { margin: 0; }
 .site-footer :focus-visible, .hero :focus-visible, .bbq :focus-visible, .cta-final :focus-visible, .topbar :focus-visible { outline-color: var(--c-gold-light); }
 
+/* Instagram flutuante: canto direito; no celular fica acima da barra fixa */
+.ig-float { position: fixed; right: var(--s-4); bottom: calc(80px + env(safe-area-inset-bottom)); z-index: 45; display: grid; place-items: center; width: 56px; height: 56px; border-radius: 50%; color: #fff;
+  background: radial-gradient(circle at 30% 110%, #fdcb52 0%, #fd5949 40%, #d6249f 65%, #285aeb 100%); box-shadow: 0 8px 24px rgb(43 7 12 / .35); transition: transform var(--t-fast) var(--ease); }
+.ig-float svg { width: 28px; height: 28px; }
+.ig-float:hover { transform: scale(1.06); }
+.ig-float:focus-visible { outline: 3px solid var(--c-gold-light); outline-offset: 3px; }
+@media (min-width: 960px) { .ig-float { right: var(--s-6); bottom: var(--s-6); } }
+
 /* Barra fixa no celular */
 .mobile-bar { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--s-2); padding: var(--s-2) var(--s-3) calc(var(--s-2) + env(safe-area-inset-bottom)); background: var(--c-wine-3); border-top: 1px solid rgb(227 196 126 / .35); transform: translateY(110%); transition: transform 400ms var(--ease); }
 .mobile-bar.is-visible { transform: none; }

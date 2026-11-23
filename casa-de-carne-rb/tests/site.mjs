@@ -86,13 +86,13 @@ check(await page.locator(".price-link").count() === await page.locator("[data-cu
 
 /* ---------- Rastreamento de conversões ---------- */
 await page.evaluate(() => { document.addEventListener("click", e => { if (e.target.closest("a[href^='tel:'], a[target=_blank]")) e.preventDefault(); }); });
-for (const sel of [".hero-actions a[data-contact]", ".price-link", ".map-card a[href*='/maps/dir/']", ".reviews a", ".topbar-link"]) await page.locator(sel).first().dispatchEvent("click");
+for (const sel of [".hero-actions a[data-contact]", ".price-link", ".map-card a[href*='/maps/dir/']", ".reviews a", ".topbar-link", ".ig-float"]) await page.locator(sel).first().dispatchEvent("click");
 await page.locator("#tab-porco").dispatchEvent("click");
 await page.fill("#c-adultos", "12");
 await page.evaluate(() => { HTMLAnchorElement.prototype.click = function () { window.__opened = this.href; }; });
 await page.locator("[data-calc]").evaluate(f => f.requestSubmit()); // envia sem depender de a barra fixa cobrir o botão
 const ev = await page.evaluate(() => window.__ev);
-for (const e of ["whatsapp_click", "phone_click", "price_request_click", "directions_click", "maps_profile_click", "cut_tab_view", "bbq_calc_used", "generate_lead"]) check(ev.includes(e), `evento "${e}"`);
+for (const e of ["whatsapp_click", "phone_click", "price_request_click", "directions_click", "maps_profile_click", "cut_tab_view", "bbq_calc_used", "generate_lead", "instagram_click"]) check(ev.includes(e), `evento "${e}"`);
 check(/^https:\/\/wa\.me\/551125665264\?text=/.test(await page.evaluate(() => window.__opened) || ""), "lista da calculadora abre o WhatsApp da loja");
 
 /* ---------- Com WhatsApp configurado ---------- */
