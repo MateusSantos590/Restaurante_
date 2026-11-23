@@ -50,7 +50,7 @@ check(await page.getAttribute("[data-nav-toggle]", "aria-expanded") === "false",
 // Abas com teclado
 await page.focus("#tab-dia");
 await page.keyboard.press("ArrowRight");
-check(await page.locator("#painel-fixos").isVisible(), "abas do cardápio respondem às setas do teclado");
+check(await page.locator("#painel-cafe").isVisible(), "abas do cardápio respondem às setas do teclado");
 
 // Formulário: inválido mostra erros
 await page.waitForTimeout(2600); // tempo mínimo anti-robô
@@ -85,6 +85,15 @@ let opened = false; p2.on("popup", () => { opened = true; });
 await p2.click("[data-order-form] button[type=submit]");
 await p2.waitForTimeout(500);
 check(!opened, "honeypot bloqueia envio de robô");
+
+// Links do Google Maps: formato oficial (abre o app no celular), sem encurtador
+const mapLinks = await p2.$$eval("a[href*='google.com/maps'], a[href*='goo.gl']", as => as.map(a => a.href));
+check(mapLinks.length >= 3 && mapLinks.every(h => /^https:\/\/www\.google\.com\/maps(\/dir\/\?api=1&destination=|\?cid=)/.test(h)),
+  `links do Google Maps no formato oficial (${mapLinks.length})`);
+
+// Mapa: nenhum iframe; cartão com atalho para o Google Maps
+check(await p2.locator("iframe").count() === 0, "página não embute iframes de terceiros");
+check(await p2.locator(".map a[href*='google.com/maps']").isVisible(), "cartão do mapa tem botão 'Abrir no Google Maps'");
 
 // Cabeçalhos de segurança
 const res = await p2.request.get(BASE + "/");

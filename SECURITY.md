@@ -20,8 +20,8 @@ sessão, senha vazada, servidor desatualizado). O que sobra, e como tratamos:
 | Abuso de câmera/microfone/localização | `Permissions-Policy` bloqueando tudo |
 | Spam/robôs no formulário | honeypot, tempo mínimo de preenchimento, intervalo entre envios, validação e limites de tamanho |
 | Mensagem com caracteres invisíveis/bidi (golpe visual) | limpeza de caracteres de controle e bidi antes de montar a mensagem |
-| Dados pessoais (LGPD) | nada é armazenado; sem cookies; mapa do Google só carrega com clique; política de privacidade publicada |
-| Iframe do mapa | carregado sob demanda e com `sandbox` |
+| Dados pessoais (LGPD) | nada é armazenado; sem cookies; nenhum mapa ou conteúdo do Google embutido; política de privacidade publicada |
+| Conteúdo de terceiros embutido | nenhum: `frame-src 'none'`; o mapa abre no Google Maps |
 | Arquivos de configuração expostos (Apache) | `.htaccess` bloqueia arquivos ocultos, `.md`, `.json`, `.toml`, listagem de diretório |
 | CI comprometido | workflow com `permissions: contents: read` |
 

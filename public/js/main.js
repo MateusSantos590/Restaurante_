@@ -12,22 +12,19 @@
      ---------------------------------------------------------------------- */
   var CONFIG = Object.freeze({
     // EDITAR: número real com DDI+DDD, só dígitos. Ex.: 5511987654321
-    whatsapp: "5511900000000",
+    whatsapp: "5511965666268",
     timeZone: "America/Sao_Paulo",
     // Horários por dia da semana (0 = domingo). null = fechado. Formato "HH:MM".
     // EDITAR: confirme o horário real.
     hours: {
       0: null,
-      1: ["10:30", "15:30"],
-      2: ["10:30", "15:30"],
-      3: ["10:30", "15:30"],
-      4: ["10:30", "15:30"],
-      5: ["10:30", "15:30"],
-      6: ["10:30", "15:00"]
-    },
-    mapEmbed: "https://www.google.com/maps?q=" +
-      encodeURIComponent("Hora do Rango Restaurante, R. Daniel Bernardo, 180 - São Miguel Paulista, São Paulo - SP, 08010-100") +
-      "&output=embed"
+      1: ["07:30", "18:20"],
+      2: ["07:30", "18:20"],
+      3: ["07:30", "18:20"],
+      4: ["07:30", "18:20"],
+      5: ["07:30", "18:20"],
+      6: ["07:30", "18:20"]
+    }
   });
 
   var WA_PATTERN = /^\d{12,13}$/;
@@ -54,7 +51,7 @@
     return { day: days[map.weekday], minutes: parseInt(map.hour, 10) * 60 + parseInt(map.minute, 10) };
   }
   function toMinutes(hhmm) { var p = hhmm.split(":"); return +p[0] * 60 + +p[1]; }
-  function fmt(hhmm) { return hhmm.replace(":", "h").replace("h00", "h"); }
+  function fmt(hhmm) { return hhmm.replace(/^0/, "").replace(":", "h").replace("h00", "h"); }
 
   function nextOpening(day) {
     var names = ["domingo", "segunda", "terça", "quarta", "quinta", "sexta", "sábado"];
@@ -99,6 +96,14 @@
       var dish = item.querySelector("h3");
       var target = document.querySelector("[data-today-dish]");
       if (dish && target) target.textContent = dish.textContent;
+      // Pedido já começa com o prato do dia: menos digitação, mais pedidos.
+      if (dish && CONFIG.hours[now.day]) {
+        var msg = "Olá! Vi o prato de hoje no site (" + dish.textContent + "). Quero fazer um pedido.";
+        document.querySelectorAll("a[data-wa^='Olá! Quero fazer um pedido']").forEach(function (a) {
+          a.setAttribute("data-wa", msg);
+        });
+        initWhatsAppLinks();
+      }
       if (dishDay !== now.day) {
         var label = document.querySelector(".today-label");
         if (label) label.textContent = "Na segunda tem";
@@ -316,28 +321,7 @@
   }
 
   /* ----------------------------------------------------------------------
-     6. Mapa sob demanda (privacidade + performance)
-     ---------------------------------------------------------------------- */
-  function initMap() {
-    var box = document.querySelector("[data-map]");
-    var btn = document.querySelector("[data-map-load]");
-    if (!box || !btn) return;
-    btn.addEventListener("click", function () {
-      var iframe = document.createElement("iframe");
-      iframe.src = CONFIG.mapEmbed;
-      iframe.title = "Mapa: Hora do Rango, R. Daniel Bernardo, 180, São Miguel Paulista";
-      iframe.loading = "lazy";
-      iframe.referrerPolicy = "no-referrer-when-downgrade";
-      // sandbox limita o que o iframe pode fazer na nossa página
-      iframe.setAttribute("sandbox", "allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox");
-      iframe.setAttribute("allowfullscreen", "");
-      box.replaceChildren(iframe);
-      iframe.focus();
-    }, { once: true });
-  }
-
-  /* ----------------------------------------------------------------------
-     7. Animação de entrada ao rolar (só transform/opacity)
+     6. Animação de entrada ao rolar (só transform/opacity)
      ---------------------------------------------------------------------- */
   function initReveal() {
     var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -355,13 +339,29 @@
     });
   }
 
+  function initShare() {
+    var a = document.querySelector("[data-share]");
+    if (!a) return;
+    var url = location.origin + location.pathname + "#cardapio";
+    a.href = "https://wa.me/?text=" + encodeURIComponent("Olha o cardápio do Hora do Rango, em São Miguel Paulista: " + url);
+  }
+
+  /* Pausa a animação do prato quando ele sai da tela: menos trabalho para o celular */
+  function initPlatePause() {
+    var art = document.querySelector(".hero-art");
+    if (!art || !("IntersectionObserver" in window)) return;
+    new IntersectionObserver(function (entries) {
+      art.classList.toggle("is-paused", !entries[0].isIntersecting);
+    }).observe(art);
+  }
+
   function initYear() {
     var y = document.querySelector("[data-year]");
     if (y) y.textContent = String(new Date().getFullYear());
   }
 
   function boot() {
-    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initMap, initReveal, initYear]
+    [initWhatsAppLinks, initStatus, initHeader, initTabs, initOrderForm, initReveal, initShare, initPlatePause, initYear]
       .forEach(function (fn) {
         try { fn(); } catch (err) { console.error(err); } // uma falha não derruba o resto
       });

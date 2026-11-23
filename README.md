@@ -15,13 +15,15 @@ conteúdo de exemplo, marcado com `EDITAR` no código. Procure por `EDITAR` e tr
 
 | O quê | Onde |
 |---|---|
-| Número do WhatsApp (`5511900000000`) | `public/js/main.js` (CONFIG), `public/index.html` (links `wa.me`, `tel:`, rodapé e JSON-LD) |
+| Número do WhatsApp (`5511965666268`) | `public/js/main.js` (CONFIG), `public/index.html` (links `wa.me`, `tel:`, rodapé e JSON-LD) |
 | Horário de funcionamento | `public/js/main.js` (CONFIG.hours), tabela em `index.html` e JSON-LD |
 | Cardápio e preços | `public/index.html`, seção `#cardapio` |
 | Texto "Sobre a casa" | `public/index.html`, seção `#sobre` |
 | Domínio (`horadorango.com.br`) | `index.html` (canonical, og:url, og:image, JSON-LD), `sitemap.xml`, `robots.txt`, `security.txt`, `politica-de-privacidade.html` |
 | E-mails de contato e segurança | `politica-de-privacidade.html`, `.well-known/security.txt`, `SECURITY.md` |
 | Razão social / CNPJ (recomendado) | `politica-de-privacidade.html` |
+
+Marketing: veja `docs/MARKETING.md` (Google Perfil da Empresa, links rastreáveis, rotina semanal).
 
 Dica: `grep -rn "EDITAR\|900000000\|horadorango.com.br" public`
 
@@ -59,7 +61,7 @@ Dica: `grep -rn "EDITAR\|900000000\|horadorango.com.br" public`
 5. **Como pedir**: 3 passos.
 6. **Avaliações**: leva às avaliações reais do Google (não inventamos depoimentos).
 7. **Encomendas**: formulário que monta a mensagem e abre o WhatsApp (sem servidor).
-8. **Localização**: endereço, horários com o dia atual destacado, "Como chegar" e mapa sob demanda.
+8. **Localização**: endereço, horários com o dia atual destacado, "Como chegar" e atalho para o Google Maps.
 9. **CTA final** e **rodapé**. No celular, botão flutuante de WhatsApp.
 
 ### SEO local
