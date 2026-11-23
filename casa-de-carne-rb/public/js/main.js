@@ -246,7 +246,7 @@
   /* Animações contínuas (selo e faixa de cortes) param quando saem da tela */
   function initStampPause() {
     if (!("IntersectionObserver" in window)) return;
-    [".hero-art", ".ticker"].forEach(function (sel) {
+    [".hero-art", ".ticker", ".hero"].forEach(function (sel) {
       var el = document.querySelector(sel);
       if (el) new IntersectionObserver(function (en) { el.classList.toggle("is-paused", !en[0].isIntersecting); }).observe(el);
     });

@@ -3,6 +3,8 @@
 Landing page do açougue **Casa de Carne RB** (R. Manuel Lemes da Silva, 426, Jardim das Oliveiras, São Paulo/SP).
 Mesma base técnica do site do restaurante (HTML, CSS e JS puros, sem dependências), com identidade, layout e estratégia próprios.
 
+**Linguagem visual:** casa de carnes clássica. Vinho profundo, dourado e creme; títulos em Zilla Slab (serifa grossa) e texto em Archivo; moldura em brasão no topo, cortes curvos entre seções, brasa com faíscas e faixa dourada com os cortes. A direção foi inspirada no estilo de sites de marcas de carne premium, sem usar nome, logo, fotos ou textos de outra marca.
+
 ## Dados usados
 | Dado | Origem |
 |---|---|
@@ -44,7 +46,7 @@ casa-de-carne-rb/
 │   ├── css/styles.css         ← tokens: carvão, vermelho açougue, kraft
 │   ├── js/main.js             ← CONFIG (WhatsApp, horários, regra do churrasco)
 │   ├── js/analytics.js        ← eventos de conversão + GA4 opcional com consentimento
-│   ├── fonts/archivo.woff2    ← fonte variável (largura e peso), hospedada no site
+│   ├── fonts/                 ← Archivo (texto) e Zilla Slab 700 (títulos), hospedadas no site
 │   ├── img/                   ← favicon, ícones, og-image
 │   ├── _headers, .htaccess    ← cabeçalhos de segurança (Cloudflare/Netlify e Apache)
 │   └── robots.txt, sitemap.xml, site.webmanifest, .well-known/security.txt
