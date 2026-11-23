@@ -13,7 +13,7 @@
   <meta name="referrer" content="strict-origin-when-cross-origin">
 
   <title>Hora do Rango Restaurante | Comida caseira em São Miguel Paulista</title>
-  <meta name="description" content="Restaurante em São Miguel Paulista, zona leste de São Paulo. Aberto de segunda a sábado, das 7h30 às 18h20. Veja o prato do dia e peça pelo WhatsApp. R. Daniel Bernardo, 180.">
+  <meta name="description" content="Restaurante em São Miguel Paulista, zona leste de São Paulo. Café da manhã e almoço, de segunda a sábado, das 7h30 às 18h20. Veja o prato do dia e peça pelo WhatsApp. R. Daniel Bernardo, 180.">
   <link rel="canonical" href="https://www.horadorango.com.br/">
   <meta name="theme-color" content="#2a1b12">
 
@@ -22,7 +22,7 @@
   <meta property="og:locale" content="pt_BR">
   <meta property="og:site_name" content="Hora do Rango Restaurante">
   <meta property="og:title" content="Hora do Rango | Comida caseira em São Miguel Paulista">
-  <meta property="og:description" content="Veja o prato do dia e peça pelo WhatsApp. Segunda a sábado, das 7h30 às 18h20.">
+  <meta property="og:description" content="Café da manhã e prato do dia. Peça pelo WhatsApp. Segunda a sábado, das 7h30 às 18h20.">
   <meta property="og:url" content="https://www.horadorango.com.br/">
   <meta property="og:image" content="https://www.horadorango.com.br/img/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -73,6 +73,7 @@
     "@type": "FAQPage",
     "mainEntity": [
       { "@type": "Question", "name": "Qual o horário de funcionamento?", "acceptedAnswer": { "@type": "Answer", "text": "De segunda a sábado, das 7h30 às 18h20. Domingo fechado." } },
+      { "@type": "Question", "name": "Vocês servem café da manhã?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Abrimos às 7h30, de segunda a sábado." } },
       { "@type": "Question", "name": "Onde fica o Hora do Rango?", "acceptedAnswer": { "@type": "Answer", "text": "Na R. Daniel Bernardo, 180, São Miguel Paulista, São Paulo, CEP 08010-100." } },
       { "@type": "Question", "name": "Como faço um pedido?", "acceptedAnswer": { "@type": "Answer", "text": "Pelo WhatsApp (11) 96566-6268. Informe o prato e se vai retirar ou comer no local." } },
       { "@type": "Question", "name": "Vocês fazem encomenda para empresas ou eventos?", "acceptedAnswer": { "@type": "Answer", "text": "Sim. Use o formulário do site ou chame no WhatsApp informando quantidade e data." } }
@@ -123,7 +124,7 @@
             <span data-status-text>Aberto de segunda a sábado</span>
           </p>
           <h1 id="hero-titulo">Comida caseira <em>em São Miguel Paulista.</em></h1>
-          <p class="lead">Todo dia tem um prato diferente. Veja o de hoje, mande o pedido pelo WhatsApp e combine a retirada.</p>
+          <p class="lead">Café da manhã a partir das 7h30 e, no almoço, um prato diferente por dia. Veja o de hoje e mande o pedido pelo WhatsApp.</p>
           <div class="hero-actions">
             <a class="btn btn-primary btn-lg" href="https://wa.me/5511965666268?text=Ol%C3%A1!%20Quero%20fazer%20um%20pedido." target="_blank" rel="noopener noreferrer" data-wa="Olá! Quero fazer um pedido.">
               <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
@@ -221,8 +222,8 @@
         </article>
         <article class="perk" data-reveal>
           <svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>
-          <h2>Abre cedo</h2>
-          <p>A porta abre às 7h30 e fecha às 18h20, de segunda a sábado.</p>
+          <h2>Café da manhã</h2>
+          <p>A porta abre às 7h30, de segunda a sábado. Tem café, pão na chapa e lanches antes do almoço.</p>
         </article>
         <article class="perk" data-reveal>
           <svg class="perk-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-whatsapp"/></svg>
@@ -238,13 +239,14 @@
       <div class="container">
         <header class="section-head" data-reveal>
           <p class="eyebrow">Cardápio</p>
-          <h2 id="cardapio-titulo">O cardápio de cada dia</h2>
+          <h2 id="cardapio-titulo">Cardápio: café da manhã e almoço</h2>
           <p>Todo prato acompanha arroz, feijão, salada e uma guarnição. O prato de hoje aparece destacado.</p>
         </header>
 
         <div class="tabs" data-tabs>
           <div class="tab-list" role="tablist" aria-label="Categorias do cardápio">
             <button class="tab" role="tab" id="tab-dia" aria-controls="painel-dia" aria-selected="true">Prato do dia</button>
+            <button class="tab" role="tab" id="tab-cafe" aria-controls="painel-cafe" aria-selected="false" tabindex="-1">Café da manhã</button>
             <button class="tab" role="tab" id="tab-fixos" aria-controls="painel-fixos" aria-selected="false" tabindex="-1">Todo dia</button>
             <button class="tab" role="tab" id="tab-porcoes" aria-controls="painel-porcoes" aria-selected="false" tabindex="-1">Porções</button>
             <button class="tab" role="tab" id="tab-bebidas" aria-controls="painel-bebidas" aria-selected="false" tabindex="-1">Bebidas</button>
@@ -258,6 +260,18 @@
               <li class="menu-item" data-weekday="4"><div><span class="day">Quinta</span><h3>Macarronada com frango assado</h3><p>Massa ao sugo e coxa e sobrecoxa assadas.</p></div><span class="price">R$ 26,90</span></li>
               <li class="menu-item" data-weekday="5"><div><span class="day">Sexta</span><h3>Peixe empanado</h3><p>Filé de merluza, purê de batata e vinagrete.</p></div><span class="price">R$ 27,90</span></li>
               <li class="menu-item" data-weekday="6"><div><span class="day">Sábado</span><h3>Feijoada completa</h3><p>A tradição de sábado, com todos os acompanhamentos.</p></div><span class="price">R$ 29,90</span></li>
+            </ul>
+          </div>
+
+          <div class="tab-panel" role="tabpanel" id="painel-cafe" aria-labelledby="tab-cafe" tabindex="0" hidden>
+            <!-- EDITAR: itens e preços de exemplo. Confirme com o restaurante e informe até que horas serve café da manhã. -->
+            <ul class="menu-list">
+              <li class="menu-item"><div><h3>Pão na chapa</h3><p>Pão francês com manteiga, na chapa.</p></div><span class="price">R$ 5,00</span></li>
+              <li class="menu-item"><div><h3>Pão com ovo</h3><p>Pão francês com ovo mexido ou frito.</p></div><span class="price">R$ 8,00</span></li>
+              <li class="menu-item"><div><h3>Misto quente</h3><p>Presunto e queijo, grelhado.</p></div><span class="price">R$ 10,00</span></li>
+              <li class="menu-item"><div><h3>Café com leite</h3><p>Copo grande.</p></div><span class="price">R$ 6,00</span></li>
+              <li class="menu-item"><div><h3>Café preto</h3><p>Coado na hora.</p></div><span class="price">R$ 4,00</span></li>
+              <li class="menu-item"><div><h3>Bolo caseiro (fatia)</h3><p>Sabor do dia.</p></div><span class="price">R$ 7,00</span></li>
             </ul>
           </div>
 
@@ -305,7 +319,7 @@
           <p class="eyebrow">Sobre a casa</p>
           <h2 id="sobre-titulo">Um restaurante do bairro</h2>
           <!-- EDITAR: troque pela história real (desde quando existe, quem cozinha, de onde vêm as receitas). Um detalhe verdadeiro vale mais que qualquer frase de efeito. -->
-          <p>O Hora do Rango fica na Rua Daniel Bernardo, em São Miguel Paulista. Serve comida caseira de segunda a sábado, com um prato do dia diferente a cada dia da semana.</p>
+          <p>O Hora do Rango fica na Rua Daniel Bernardo, em São Miguel Paulista. Abre às 7h30 com café da manhã e serve comida caseira de segunda a sábado, com um prato do dia diferente a cada dia.</p>
           <p>Passe no almoço, peça pelo WhatsApp ou encomende marmitas para a equipe.</p>
         </div>
         <ul class="about-stats" data-reveal>
@@ -419,6 +433,7 @@
         </header>
         <div class="faq-list" data-reveal>
           <details><summary>Qual o horário de funcionamento?</summary><p>De segunda a sábado, das 7h30 às 18h20. Domingo fechamos.</p></details>
+          <details><summary>Vocês servem café da manhã?</summary><p>Sim. A porta abre às 7h30, de segunda a sábado. Veja os itens na aba "Café da manhã" do cardápio.</p></details>
           <details><summary>Onde fica o restaurante?</summary><p>Na R. Daniel Bernardo, 180, em São Miguel Paulista, São Paulo (CEP 08010-100). O botão "Como chegar" abre o trajeto no Google Maps.</p></details>
           <details><summary>Como faço um pedido?</summary><p>Pelo WhatsApp, no (11) 96566-6268. Diga o prato e se vai retirar ou comer aqui. A gente confirma o valor e o horário na conversa.</p></details>
           <details><summary>Vocês fazem encomenda para empresas ou eventos?</summary><p>Sim, pelo formulário da seção de encomendas ou direto no WhatsApp. Informe a quantidade e a data.</p></details>
